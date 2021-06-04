@@ -157,4 +157,4 @@ echo "${green} Make sure to use the command sudo usermod -aG docker \$user_nameh
 
 fi
 
-echo"${red} Installed all needed tools.${reset}"
+echo "${red} Installed all needed tools.${reset}"
