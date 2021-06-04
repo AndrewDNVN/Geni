@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#installs ansible and the docker scripts on a centos machine
+#installs ansible and the docker scripts
 #added in colored output for ease of following sctipts
 
 red=`tput setaf 1`
