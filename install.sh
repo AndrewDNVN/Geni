@@ -68,7 +68,7 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	echo "${green}Command to run: htpasswd -c .htpasswd.user f [user_namehere]${reset}"
 
-	echo "${green} Make sure to use the command sudo usermod -aG docker \$user_namehere to be able to assign the user to veiw the docker container.${reset}"
+	echo "${green}Make sure to use the command sudo usermod -aG docker \$user_namehere to be able to assign the user to veiw the docker container.${reset}"
 
 else
 
@@ -156,9 +156,9 @@ else
 
 	echo "${green}Command to run: htpasswd -c .htpasswd.user f [user_namehere]${reset}"
 
-	echo "${green} Make sure to use the command sudo usermod -aG docker \$user_namehere to be able to assign the user to veiw the docker container.${reset}"
+	echo "${green}Make sure to use the command sudo usermod -aG docker \$user_namehere to be able to assign the user to veiw the docker container.${reset}"
 
 fi
 
 
-echo "${red} Installed all needed tools.${reset}"
+echo "${red}Installed all needed tools.${reset}"
