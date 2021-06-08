@@ -51,6 +51,8 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
+	chmod +x /usr/local/bin/docker-compose
+
 	wait
 
 	git clone https://github.com/fabric-testbed/fabric-docker-images.git
@@ -139,6 +141,8 @@ else
 	echo "${red}Pulling Docker images from github ${reset}"
 
 	curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+	chmod +x /usr/local/bin/docker-compose
 
 	wait
 
