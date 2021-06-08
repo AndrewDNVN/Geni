@@ -9,12 +9,20 @@ red=`tput setaf 1`
 green=`tput setaf 2`
 blue=`tput setaf 4`
 reset=`tput sgr0`
+
+#This is to login into the elk stack 
 usr_name_elk="fabricadmin"
+passwd_elk=$2
+
+#usr_name is for the user on the system themselves for the docker containers
 usr_name=$1
 
-echo $usr_name
+#for Geni Tooling and size
+bash /usr/testbed/bin/mkextrafs /mnt
 
+exit
 
+#checking for Ubuntu
 if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	echo "${blue}Found Ubuntu. ${reset}"
@@ -33,21 +41,29 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	apt -y install python-argcomplete
 
-	echo "ansible installed."
+	echo "${red}ansible installed.${reset}"
 
 	#testing the install correctly
 
 	ansible --version
 
-	systemctl start docker
-
 	wait
 
-	echo "${red}Installing git if not present. ${reset}"
+	echo "${red}Installing git if not present.${reset}"
 
 	apt-get -y install git
 
 	wait
+
+	echo "${red}Installing docker if not present.${reset}"
+   	
+   	apt-get -y install docker-ce docker-ce-cli containerd.io
+
+   	echo "${red}Testing docker.${reset}"
+
+   	systemctl start docker
+
+   	docker run hello-world
 
 	echo "${red}Pulling Docker images from github ${reset}"
 
@@ -63,7 +79,7 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	sysctl -w vm.max_map_count=262144 
 
-	apt-get install apache2-utils
+	apt-get -y install apache2-utils
 
 	chmod +x /usr/local/bin/docker-compose
 
@@ -73,18 +89,32 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	fabric-docker-images/elk/setfolders.sh
 
-	echo "${red}Set folders. ${reset}"
+	echo "${red}Set folders.${reset}"
+
+	#adding user to docker group to manage
 
 	usermod -aG docker $usr_name
 
 	#this is a poor implementation
 
-	htpasswd -bcm  ~/fabric-docker-images/elk/nginx/etc/.htpasswd.user $usr_name_elk 2deHMj4dXvTf
+	htpasswd -bcm  ~/fabric-docker-images/elk/nginx/etc/.htpasswd.user $usr_name_elk $passwd_elk
+
+	wait
+
+	echo "${red}Installed all needed tools. Brining up elk.${reset}"
+
+	#bringing up the elk stack fully
+
+	echo "${red}Installed all needed tools. Brining up elk.${reset}"
 
 	docker-compose -f  ~/fabric-docker-images/elk/docker-compose.yml --env-file ~/fabric-docker-images/elk/.env up
+
+	#fin
 	
 
 else
+
+	#script designd for CentOs or Ubuntu
 
 	echo "${blue}Found CentOs.${reset}"
 
@@ -130,7 +160,11 @@ else
 
 	wait
 
-	systemctl start docker
+	echo "${red}Testing docker.${reset}"
+
+   	systemctl start docker
+
+   	docker run hello-world
 
 	wait
 
@@ -164,24 +198,21 @@ else
 
 	fabric-docker-images/elk/setfolders.sh
 
-	echo "${red}Set folders. ${reset}"
+	echo "${red}Set folders.${reset}"
 
 	usermod -aG docker $usr_name
 
-	#this is a poor implementation
-	#htpasswd -bcm  ~/fabric-docker-images/elk/nginx/etc .htpasswd.user $usr_name_elk 2deHMj4dXvTf
+	#setting up user and password from command line
 
-	htpasswd -bcm  ~/fabric-docker-images/elk/nginx/etc/.htpasswd.user $usr_name_elk 2deHMj4dXvTf
+	htpasswd -bcm  ~/fabric-docker-images/elk/nginx/etc/.htpasswd.user $usr_name_elk $passwd_elk
 
-	#echo "${red}Switch to correct diretory /fabric-docker-images/elk/nginx/etc. And edit the config file to set the login for the server.${reset}"
+	wait
+
+	echo "${red}Installed all needed tools. Brining up elk.${reset}"
 
 	docker-compose -f  ~/fabric-docker-images/elk/docker-compose.yml --env-file ~/fabric-docker-images/elk/.env up
 
-	#echo "${green}Command to run: htpasswd -c .htpasswd.user [user_namehere]${reset}"
+	#fin
 
 fi
 
-
-echo "${red}Installed all needed tools.${reset}"
-
-echo "${red}Make sure if stablity issues occur in GENI use: sudo bash /usr/testbed/bin/mkextrafs /mnt exit.${reset}"  
