@@ -177,3 +177,5 @@ fi
 
 
 echo "${red}Installed all needed tools.${reset}"
+
+echo "${red}Make sure if stablity issues occur in GENI use: sudo bash /usr/testbed/bin/mkextrafs /mnt exit.${reset}"  
