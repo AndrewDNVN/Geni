@@ -3,11 +3,13 @@
 #installs ansible and the docker scripts
 #added in colored output for ease of following sctipts
 
+#need to implement pasword for the fabricadmin user
+
 red=`tput setaf 1`
 green=`tput setaf 2`
 blue=`tput setaf 4`
 reset=`tput sgr0`
-usr_name=amdo257
+usr_name="fabricadmin"
 
 
 if [ -n "$(uname -a | grep Ubuntu)" ]; then
