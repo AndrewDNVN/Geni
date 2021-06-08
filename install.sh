@@ -17,10 +17,6 @@ passwd_elk=$2
 #usr_name is for the user on the system themselves for the docker containers
 usr_name=$1
 
-#for Geni Tooling and size
-bash /usr/testbed/bin/mkextrafs /mnt
-
-exit
 
 #checking for Ubuntu
 if [ -n "$(uname -a | grep Ubuntu)" ]; then
