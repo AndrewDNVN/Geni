@@ -3,13 +3,14 @@
 #installs ansible and the docker scripts
 #added in colored output for ease of following sctipts
 
-#need to implement pasword for the fabricadmin user
+#need to implement password I/O for the fabricadmin user
 
 red=`tput setaf 1`
 green=`tput setaf 2`
 blue=`tput setaf 4`
 reset=`tput sgr0`
-usr_name="fabricadmin"
+usr_name_elk="fabricadmin"
+usr_name=$1
 
 
 if [ -n "$(uname -a | grep Ubuntu)" ]; then
@@ -70,25 +71,18 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	echo "${red}Set folders. ${reset}"
 
-	#echo "${green}Make sure to use the command sudo usermod -aG docker \$user_namehere to be able to assign the user to veiw the docker container.${reset}"
-
 	usermod -aG docker $usr_name
 
 	#this is a poor implementation
 
-	htpasswd -bcm  ~/fabric-docker-images/elk/nginx/etc .htpasswd.user $usr_name 2deHMj4dXvTf
-
-	#echo "${red}Switch to correct diretory /fabric-docker-images/elk/nginx/etc. And edit the config file to set the login for the server.${reset}"
+	htpasswd -bcm  ~/fabric-docker-images/elk/nginx/etc .htpasswd.user $usr_name_elk 2deHMj4dXvTf
 
 	docker-compose -f  ~/fabric-docker-images/elk/docker-compose.yml --env-file ~/fabric-docker-images/elk/.env up
-
-	#echo "${green}Command to run: htpasswd -c .htpasswd.user [user_namehere]${reset}"
-
 	
 
 else
 
-	echo "${blue}Found CentOs. ${reset}"
+	echo "${blue}Found CentOs.${reset}"
 
 	yum -y install epel-release
 
@@ -168,11 +162,9 @@ else
 
 	usermod -aG docker $usr_name
 
-	#echo "${green}Make sure to use the command sudo usermod -aG docker \$user_namehere to be able to assign the user to veiw the docker container.${reset}"
-
 	#this is a poor implementation
 
-	htpasswd -bcm  ~/fabric-docker-images/elk/nginx/etc .htpasswd.user $usr_name 2deHMj4dXvTf
+	htpasswd -bcm  ~/fabric-docker-images/elk/nginx/etc .htpasswd.user $usr_name_elk 2deHMj4dXvTf
 
 	#echo "${red}Switch to correct diretory /fabric-docker-images/elk/nginx/etc. And edit the config file to set the login for the server.${reset}"
 
