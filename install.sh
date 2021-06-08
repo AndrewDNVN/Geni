@@ -52,6 +52,20 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 	wait
 
 	echo "${red}Installing docker if not present.${reset}"
+
+	#installing over https
+
+ 	apt-get -y install apt-transport-https ca-certificates curl gnupg lsb-release
+
+ 	#adding key
+
+ 	#https://docs.docker.com/engine/install/ubuntu/
+
+ 	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+ 	#setting repo
+
+	echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
    	
    	apt-get -y install docker-ce docker-ce-cli containerd.io
 
