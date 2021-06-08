@@ -12,6 +12,8 @@ reset=`tput sgr0`
 usr_name_elk="fabricadmin"
 usr_name=$1
 
+echo $usr_name
+
 
 if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
@@ -77,7 +79,7 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	#this is a poor implementation
 
-	htpasswd -bcm  ~/fabric-docker-images/elk/nginx/etc .htpasswd.user $usr_name_elk 2deHMj4dXvTf
+	htpasswd -bcm  ~/fabric-docker-images/elk/nginx/etc/.htpasswd.user $usr_name_elk 2deHMj4dXvTf
 
 	docker-compose -f  ~/fabric-docker-images/elk/docker-compose.yml --env-file ~/fabric-docker-images/elk/.env up
 	
@@ -167,8 +169,9 @@ else
 	usermod -aG docker $usr_name
 
 	#this is a poor implementation
+	#htpasswd -bcm  ~/fabric-docker-images/elk/nginx/etc .htpasswd.user $usr_name_elk 2deHMj4dXvTf
 
-	htpasswd -bcm  ~/fabric-docker-images/elk/nginx/etc .htpasswd.user $usr_name_elk 2deHMj4dXvTf
+	htpasswd -bcm  ~/fabric-docker-images/elk/nginx/etc/.htpasswd.user $usr_name_elk 2deHMj4dXvTf
 
 	#echo "${red}Switch to correct diretory /fabric-docker-images/elk/nginx/etc. And edit the config file to set the login for the server.${reset}"
 
