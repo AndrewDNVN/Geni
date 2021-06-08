@@ -9,6 +9,12 @@ blue=`tput setaf 4`
 reset=`tput sgr0`
 usr_name=amdo257
 
+ sudo bash 
+
+ /usr/testbed/bin/mkextrafs /mnt 
+
+ exit
+
 if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	echo "${blue}Found Ubuntu. ${reset}"
@@ -33,9 +39,13 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	ansible --version
 
+	systemctl start docker
+
+	wait
+
 	echo "${red}Installing git if not present. ${reset}"
 
-	 apt-get install git
+	 apt-get -y install git
 
 	wait
 
@@ -74,8 +84,6 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 	#echo "${red}Switch to correct diretory /fabric-docker-images/elk/nginx/etc. And edit the config file to set the login for the server.${reset}"
 
 	docker-compose -f  ~/fabric-docker-images/elk/docker-compose.yml --env-file ~/fabric-docker-images/elk/.env up
-
-	#--env-file
 
 	#echo "${green}Command to run: htpasswd -c .htpasswd.user [user_namehere]${reset}"
 
@@ -180,4 +188,4 @@ fi
 
 echo "${red}Installed all needed tools.${reset}"
 
-echo "${red}Make sure if stablity issues occur in GENI use:  bash /usr/testbed/bin/mkextrafs /mnt exit.${reset}"  
+echo "${red}Make sure if stablity issues occur in GENI use: sudo bash /usr/testbed/bin/mkextrafs /mnt exit.${reset}"  
