@@ -200,7 +200,7 @@ else
 
 	chmod +x /usr/local/bin/docker-compose
 
-	echo "${green}Checking docker-compose version ${reset}"
+	echo "${green}Checking docker-compose version.${reset}"
 
 	docker-compose --version
 
