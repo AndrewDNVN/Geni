@@ -35,7 +35,7 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	wait
 
-	apt -y install python-argcomplete
+	apt-get -y install python-argcomplete
 
 	echo "${red}ansible installed.${reset}"
 
@@ -67,7 +67,7 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
    	
-   	apt-get -y install docker-ce docker-ce-cli containerd.io
+   	apt-get -y install docker-ce docker-ce-cli containerd.io docker.io
 
    	echo "${red}Testing docker.${reset}"
 
@@ -110,8 +110,6 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 	htpasswd -bcm  ~/fabric-docker-images/elk/nginx/etc/.htpasswd.user $usr_name_elk $passwd_elk
 
 	wait
-
-	echo "${red}Installed all needed tools. Brining up elk.${reset}"
 
 	#bringing up the elk stack fully
 
