@@ -7,6 +7,7 @@ red=`tput setaf 1`
 green=`tput setaf 2`
 blue=`tput setaf 4`
 reset=`tput sgr0`
+usr_name=amdo257
 
 if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
@@ -48,8 +49,6 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	wait
 
-	./set_folder.sh 
-
 	sudo sysctl -w vm.max_map_count=262144 
 
 	sudo apt-get install apache2-utils
@@ -64,11 +63,21 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	echo "${red}Set folders. ${reset}"
 
-	echo "${red}Switch to correct diretory /fabric-docker-images/elk/nginx/etc. And edit the config file to set the login for the server.${reset}"
+	#echo "${green}Make sure to use the command sudo usermod -aG docker \$user_namehere to be able to assign the user to veiw the docker container.${reset}"
 
-	echo "${green}Command to run: htpasswd -c .htpasswd.user f [user_namehere]${reset}"
+	sudo usermod -aG docker $usr_name
 
-	echo "${green}Make sure to use the command sudo usermod -aG docker \$user_namehere to be able to assign the user to veiw the docker container.${reset}"
+	#this is a poor implementation
+
+	htpasswd -cb /fabric-docker-images/elk/nginx/etc .htpasswd.user $usr_name 2deHMj4dXvTf
+
+	#echo "${red}Switch to correct diretory /fabric-docker-images/elk/nginx/etc. And edit the config file to set the login for the server.${reset}"
+
+	docker-compose -f /fabric-docker-images/elk/docker-compose.yml up
+
+	#echo "${green}Command to run: htpasswd -c .htpasswd.user [user_namehere]${reset}"
+
+	
 
 else
 
@@ -136,8 +145,6 @@ else
 
 	wait
 
-	./set_folder.sh 
-
 	sudo sysctl -w vm.max_map_count=262144 
 
 	sudo yum -y install -y httpd-tools
@@ -152,11 +159,19 @@ else
 
 	echo "${red}Set folders. ${reset}"
 
-	echo "${red}Switch to correct diretory /fabric-docker-images/elk/nginx/etc. And edit the config file to set the login for the server.${reset}"
+	sudo usermod -aG docker $usr_name
 
-	echo "${green}Command to run: htpasswd -c .htpasswd.user f [user_namehere]${reset}"
+	#echo "${green}Make sure to use the command sudo usermod -aG docker \$user_namehere to be able to assign the user to veiw the docker container.${reset}"
 
-	echo "${green}Make sure to use the command sudo usermod -aG docker \$user_namehere to be able to assign the user to veiw the docker container.${reset}"
+	#this is a poor implementation
+
+	htpasswd -cb /fabric-docker-images/elk/nginx/etc .htpasswd.user $usr_name 2deHMj4dXvTf
+
+	#echo "${red}Switch to correct diretory /fabric-docker-images/elk/nginx/etc. And edit the config file to set the login for the server.${reset}"
+
+	docker-compose -f /fabric-docker-images/elk/docker-compose.yml up
+
+	#echo "${green}Command to run: htpasswd -c .htpasswd.user [user_namehere]${reset}"
 
 fi
 
