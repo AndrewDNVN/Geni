@@ -73,7 +73,9 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	#echo "${red}Switch to correct diretory /fabric-docker-images/elk/nginx/etc. And edit the config file to set the login for the server.${reset}"
 
-	docker-compose -f  ~/fabric-docker-images/elk/docker-compose.yml up
+	docker-compose -f  ~/fabric-docker-images/elk/docker-compose.yml --env-file ~/fabric-docker-images/elk/.env up
+
+	#--env-file
 
 	#echo "${green}Command to run: htpasswd -c .htpasswd.user [user_namehere]${reset}"
 
@@ -169,7 +171,7 @@ else
 
 	#echo "${red}Switch to correct diretory /fabric-docker-images/elk/nginx/etc. And edit the config file to set the login for the server.${reset}"
 
-	docker-compose -f  ~/fabric-docker-images/elk/docker-compose.yml up
+	docker-compose -f  ~/fabric-docker-images/elk/docker-compose.yml --env-file ~/fabric-docker-images/elk/.env up
 
 	#echo "${green}Command to run: htpasswd -c .htpasswd.user [user_namehere]${reset}"
 
