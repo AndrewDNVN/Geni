@@ -9,29 +9,24 @@ blue=`tput setaf 4`
 reset=`tput sgr0`
 usr_name=amdo257
 
- sudo bash 
-
- /usr/testbed/bin/mkextrafs /mnt 
-
- exit
 
 if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	echo "${blue}Found Ubuntu. ${reset}"
 	  
-	 apt -y install software-properties-common
+	apt -y install software-properties-common
 
 	wait
 
-	 add-apt-repository --yes --update ppa:ansible/ansible
+	add-apt-repository --yes --update ppa:ansible/ansible
 
 	wait
 
-	 apt -y install ansible
+	apt -y install ansible
 
 	wait
 
-	 apt -y install python-argcomplete
+	apt -y install python-argcomplete
 
 	echo "ansible installed."
 
@@ -45,13 +40,13 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	echo "${red}Installing git if not present. ${reset}"
 
-	 apt-get -y install git
+	apt-get -y install git
 
 	wait
 
 	echo "${red}Pulling Docker images from github ${reset}"
 
-	 curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+	curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
 	wait
 
@@ -59,11 +54,11 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	wait
 
-	 sysctl -w vm.max_map_count=262144 
+	sysctl -w vm.max_map_count=262144 
 
-	 apt-get install apache2-utils
+	apt-get install apache2-utils
 
-	 chmod +x /usr/local/bin/docker-compose
+	chmod +x /usr/local/bin/docker-compose
 
 	echo "${green}Checking docker-compose version ${reset}"
 
@@ -75,11 +70,11 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	#echo "${green}Make sure to use the command sudo usermod -aG docker \$user_namehere to be able to assign the user to veiw the docker container.${reset}"
 
-	 usermod -aG docker $usr_name
+	usermod -aG docker $usr_name
 
 	#this is a poor implementation
 
-	 htpasswd -c -b  ~/fabric-docker-images/elk/nginx/etc .htpasswd.user $usr_name 2deHMj4dXvTf
+	htpasswd -c -b  ~/fabric-docker-images/elk/nginx/etc .htpasswd.user $usr_name 2deHMj4dXvTf
 
 	#echo "${red}Switch to correct diretory /fabric-docker-images/elk/nginx/etc. And edit the config file to set the login for the server.${reset}"
 
@@ -93,19 +88,19 @@ else
 
 	echo "${blue}Found CentOs. ${reset}"
 
-	 yum -y install epel-release
+	yum -y install epel-release
 
 	wait
 
-	 yum -y install ansible
+	yum -y install ansible
 
 	wait
 
-	 subscription-manager repos --enable ansible-2.9-for-rhel-8-x86_64-rpms
+	subscription-manager repos --enable ansible-2.9-for-rhel-8-x86_64-rpms
 
 	wait
 
-	 yum -y install python3-argcomplete
+	yum -y install python3-argcomplete
 
 	wait
 
@@ -119,35 +114,35 @@ else
 
 	echo "${red}Installing docker.${reset}"
 
-	 yum -y remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine
+	yum -y remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine
 
 	wait 
 
-	 yum -y install -y yum-utils
+	yum -y install -y yum-utils
 
 	wait
 
-	 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+	yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
 	wait
 
-	 yum -y install docker-ce docker-ce-cli containerd.io
+	yum -y install docker-ce docker-ce-cli containerd.io
 
 	wait
 
-	 systemctl start docker
+	systemctl start docker
 
 	wait
 
 	echo "${red}Installing git if not present. ${reset}"
 
-	 yum -y install git
+	yum -y install git
 
 	wait
 
 	echo "${red}Pulling Docker images from github ${reset}"
 
-	 curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+	curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
 	wait
 
@@ -155,11 +150,11 @@ else
 
 	wait
 
-	 sysctl -w vm.max_map_count=262144 
+	sysctl -w vm.max_map_count=262144 
 
-	 yum -y install -y httpd-tools
+	yum -y install -y httpd-tools
 
-	 chmod +x /usr/local/bin/docker-compose
+	chmod +x /usr/local/bin/docker-compose
 
 	echo "${green}Checking docker-compose version ${reset}"
 
@@ -169,13 +164,13 @@ else
 
 	echo "${red}Set folders. ${reset}"
 
-	 usermod -aG docker $usr_name
+	usermod -aG docker $usr_name
 
 	#echo "${green}Make sure to use the command sudo usermod -aG docker \$user_namehere to be able to assign the user to veiw the docker container.${reset}"
 
 	#this is a poor implementation
 
-	 htpasswd -c -b  ~/fabric-docker-images/elk/nginx/etc .htpasswd.user $usr_name 2deHMj4dXvTf
+	htpasswd -c -b  ~/fabric-docker-images/elk/nginx/etc .htpasswd.user $usr_name 2deHMj4dXvTf
 
 	#echo "${red}Switch to correct diretory /fabric-docker-images/elk/nginx/etc. And edit the config file to set the login for the server.${reset}"
 
