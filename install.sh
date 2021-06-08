@@ -76,7 +76,7 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	#this is a poor implementation
 
-	htpasswd -c -b  ~/fabric-docker-images/elk/nginx/etc .htpasswd.user $usr_name 2deHMj4dXvTf
+	htpasswd -mcb  ~/fabric-docker-images/elk/nginx/etc .htpasswd.user $usr_name 2deHMj4dXvTf
 
 	#echo "${red}Switch to correct diretory /fabric-docker-images/elk/nginx/etc. And edit the config file to set the login for the server.${reset}"
 
@@ -172,7 +172,7 @@ else
 
 	#this is a poor implementation
 
-	htpasswd -c -b  ~/fabric-docker-images/elk/nginx/etc .htpasswd.user $usr_name 2deHMj4dXvTf
+	htpasswd -mcb  ~/fabric-docker-images/elk/nginx/etc .htpasswd.user $usr_name 2deHMj4dXvTf
 
 	#echo "${red}Switch to correct diretory /fabric-docker-images/elk/nginx/etc. And edit the config file to set the login for the server.${reset}"
 
