@@ -13,7 +13,10 @@ install.sh is used to install all necessary tooling for the project testbed eith
   
   $password is the password used to login into the elk stack
   
-'GENI_TO_FABRIC_SAMPLE_NETWORK' is the test spec I used to test and set a standard for install.sh.
+'GENI_TO_FABRIC_SAMPLE_NETWORK_Xgb.xml' is the test spec I used to test and set a standard for install.sh. 
+  
+  There are two versions of the Spec one with 16gb of ram the other 8gb of ram. 
+  This is labeled in the file name.
 
 # -----------------------------------------------------------------------------
 # Copyright (c) 2020 University of Kentucky
