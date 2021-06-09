@@ -90,9 +90,7 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	apt-get -y install apache2-utils
 
-	chmod +x /usr/local/bin/docker-compose
-
-	echo "${green}Checking docker-compose version ${reset}"
+	echo "${green}Checking docker-compose version.${reset}"
 
 	/usr/local/bin/docker-compose --version
 
@@ -106,7 +104,7 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	#this is a poor implementation
 
-	htpasswd -bcm  /usr/local/bin/fabric_base/elk/nginx/etc/.htpasswd.user $usr_name_elk $passwd_elk
+	htpasswd -bc  /usr/local/bin/fabric_base/elk/nginx/etc/.htpasswd.user $usr_name_elk $passwd_elk
 
 	wait
 
@@ -114,7 +112,7 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	echo "${red}Installed all needed tools. Brining up elk.${reset}"
 
-	/usr/local/bin/docker-compose -f /usr/local/bin/fabric_base/elk/docker-compose.yml --env-file /usr/local/bin/fabric_base/fabric-docker-images/elk/.env up
+	/usr/local/bin/docker-compose -f /usr/local/bin/fabric_base/elk/docker-compose.yml --env-file /usr/local/bin/fabric_base/elk/.env up
 
 	#fin
 	
@@ -155,10 +153,6 @@ else
 
 	echo "${red}Installing docker.${reset}"
 
-	yum -y remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine
-
-	wait 
-
 	yum -y install -y yum-utils
 
 	wait
@@ -179,13 +173,13 @@ else
 
 	wait
 
-	echo "${red}Installing git if not present. ${reset}"
+	echo "${red}Installing git if not present.${reset}"
 
 	yum -y install git
 
 	wait
 
-	echo "${red}Pulling Docker images from github ${reset}"
+	echo "${red}Pulling Docker images from github.${reset}"
 
 	curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
@@ -213,13 +207,15 @@ else
 
 	#setting up user and password from command line
 
-	htpasswd -bcm  /usr/local/bin/fabric_base/elk/nginx/etc/.htpasswd.user $usr_name_elk $passwd_elk
+	#still issues here with the correct settings
+
+	htpasswd -bc  /usr/local/bin/fabric_base/elk/nginx/etc/.htpasswd.user $usr_name_elk $passwd_elk
 
 	wait
 
 	echo "${red}Installed all needed tools. Brining up elk.${reset}"
 
-	/usr/local/bin/docker-compose -f  /usr/local/bin/fabric_base/elk/docker-compose.yml --env-file /usr/local/bin/fabric_base/fabric-docker-images/elk/.env up
+	/usr/local/bin/docker-compose -f  /usr/local/bin/fabric_base/elk/docker-compose.yml --env-file /usr/local/bin/fabric_base/elk/.env up
 
 	#fin
 
