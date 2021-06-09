@@ -21,6 +21,8 @@ passwd_elk=$3
 if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	echo "${blue}Found Ubuntu.${reset}"
+
+	#https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html
 	  
 	apt -y install software-properties-common
 
@@ -33,8 +35,6 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 	apt -y install ansible
 
 	wait
-
-	apt-get -y install python-argcomplete
 
 	echo "${red}ansible installed.${reset}"
 
@@ -74,7 +74,7 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
    	docker run hello-world
 
-	echo "${red}Pulling Docker images from github.${reset}"
+	echo "${red}Pulling Elk-Docker scripts from github.${reset}"
 
 	curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
@@ -90,7 +90,7 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	apt-get -y install apache2-utils
 
-	echo "${green}Checking docker-compose version.${reset}"
+	echo "${green}Checking docker-compose version / working.${reset}"
 
 	/usr/local/bin/docker-compose --version
 
@@ -179,7 +179,7 @@ else
 
 	wait
 
-	echo "${red}Pulling Docker images from github.${reset}"
+	echo "${red}Pulling Elk-Docker scripts from github.${reset}"
 
 	curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
@@ -195,7 +195,7 @@ else
 
 	yum -y install -y httpd-tools
 
-	echo "${green}Checking docker-compose version.${reset}"
+	echo "${green}Checking docker-compose version / working.${reset}"
 
 	/usr/local/bin/docker-compose --version
 
