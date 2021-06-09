@@ -140,11 +140,7 @@ else
 	#subscription-manager repos --enable ansible-2.9-for-rhel-8-x86_64-rpms
 
 	wait
-
-	yum -y install python3-argcomplete
-
-	wait
-
+	
 	echo "${red}Ansible installed.${reset}"
 
 	#testing the install correctly
