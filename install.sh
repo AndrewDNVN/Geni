@@ -121,6 +121,8 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 else
 
+	#working
+
 	#script designd for CentOs
 
 	echo "${blue}Found CentOs.${reset}"
@@ -140,7 +142,7 @@ else
 	#subscription-manager repos --enable ansible-2.9-for-rhel-8-x86_64-rpms
 
 	wait
-	
+
 	echo "${red}Ansible installed.${reset}"
 
 	#testing the install correctly
