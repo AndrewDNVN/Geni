@@ -11,7 +11,7 @@ install.sh is used to install all necessary tooling for the project testbed eith
   
   $usr_name_elk is for the user name to login into the elk stack
   
-  $password is the password used to login into the elk stack
+  $password_elk is the password used to login into the elk stack
   
 'GENI_TO_FABRIC_SAMPLE_NETWORK_Xgb.xml' is the test spec I used to test and set a standard for install.sh. 
   
