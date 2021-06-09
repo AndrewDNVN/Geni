@@ -4,7 +4,8 @@
 This Repo is for all of the currnet tooling that I am using to build out a test bed for the fabric project.
 
 # -----------------------------------------------------------------------------
-# Copyright (c) 2020 University of Kentucky# Permission is hereby granted, free of charge, to any person obtaining a copy
+# Copyright (c) 2020 University of Kentucky
+# Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and/or hardware specification (the "Work") to deal in the
 # Work without restriction, including without limitation the rights to use,
 # copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
