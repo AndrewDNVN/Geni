@@ -94,9 +94,9 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	echo "${green}Checking docker-compose version ${reset}"
 
-	docker-compose --version
+	/usr/local/bin/docker-compose --version
 
-	fabric-docker-images/elk/setfolders.sh
+	/usr/local/bin/fabric_base/fabric-docker-images/elk/setfolders.sh
 
 	echo "${red}Set folders.${reset}"
 
@@ -114,7 +114,7 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	echo "${red}Installed all needed tools. Brining up elk.${reset}"
 
-	docker-compose -f /usr/local/bin/fabric_base/fabric-docker-images/elk/docker-compose.yml --env-file /usr/local/bin/fabric_base/fabric-docker-images/elk/.env up
+	/usr/local/bin/docker-compose -f /usr/local/bin/fabric_base/fabric-docker-images/elk/docker-compose.yml --env-file /usr/local/bin/fabric_base/fabric-docker-images/elk/.env up
 
 	#fin
 	
@@ -199,9 +199,9 @@ else
 
 	echo "${green}Checking docker-compose version.${reset}"
 
-	docker-compose --version
+	/usr/local/bin/docker-compose --version
 
-	fabric-docker-images/elk/setfolders.sh
+	/usr/local/bin/fabric_base/fabric-docker-images/elk/setfolders.sh
 
 	echo "${red}Set folders.${reset}"
 
@@ -215,7 +215,7 @@ else
 
 	echo "${red}Installed all needed tools. Brining up elk.${reset}"
 
-	docker-compose -f  /usr/local/bin/fabric_base/fabric-docker-images/elk/docker-compose.yml --env-file /usr/local/bin/fabric_base/fabric-docker-images/elk/.env up
+	/usr/local/bin/docker-compose -f  /usr/local/bin/fabric_base/fabric-docker-images/elk/docker-compose.yml --env-file /usr/local/bin/fabric_base/fabric-docker-images/elk/.env up
 
 	#fin
 
