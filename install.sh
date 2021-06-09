@@ -96,7 +96,7 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	/usr/local/bin/docker-compose --version
 
-	/usr/local/bin/fabric_base/fabric-docker-images/elk/setfolders.sh
+	/usr/local/bin/fabric_base/elk/setfolders.sh
 
 	echo "${red}Set folders.${reset}"
 
@@ -106,7 +106,7 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	#this is a poor implementation
 
-	htpasswd -bcm  /usr/local/bin/fabric_base/fabric-docker-images/elk/nginx/etc/.htpasswd.user $usr_name_elk $passwd_elk
+	htpasswd -bcm  /usr/local/bin/fabric_base/elk/nginx/etc/.htpasswd.user $usr_name_elk $passwd_elk
 
 	wait
 
@@ -114,7 +114,7 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	echo "${red}Installed all needed tools. Brining up elk.${reset}"
 
-	/usr/local/bin/docker-compose -f /usr/local/bin/fabric_base/fabric-docker-images/elk/docker-compose.yml --env-file /usr/local/bin/fabric_base/fabric-docker-images/elk/.env up
+	/usr/local/bin/docker-compose -f /usr/local/bin/fabric_base/elk/docker-compose.yml --env-file /usr/local/bin/fabric_base/fabric-docker-images/elk/.env up
 
 	#fin
 	
@@ -132,6 +132,8 @@ else
 	yum -y install ansible
 
 	wait
+
+	#issue
 
 	subscription-manager repos --enable ansible-2.9-for-rhel-8-x86_64-rpms
 
@@ -201,7 +203,7 @@ else
 
 	/usr/local/bin/docker-compose --version
 
-	/usr/local/bin/fabric_base/fabric-docker-images/elk/setfolders.sh
+	/usr/local/bin/fabric_base/elk/setfolders.sh
 
 	echo "${red}Set folders.${reset}"
 
@@ -209,13 +211,13 @@ else
 
 	#setting up user and password from command line
 
-	htpasswd -bcm  /usr/local/bin/fabric_base/fabric-docker-images/elk/nginx/etc/.htpasswd.user $usr_name_elk $passwd_elk
+	htpasswd -bcm  /usr/local/bin/fabric_base/elk/nginx/etc/.htpasswd.user $usr_name_elk $passwd_elk
 
 	wait
 
 	echo "${red}Installed all needed tools. Brining up elk.${reset}"
 
-	/usr/local/bin/docker-compose -f  /usr/local/bin/fabric_base/fabric-docker-images/elk/docker-compose.yml --env-file /usr/local/bin/fabric_base/fabric-docker-images/elk/.env up
+	/usr/local/bin/docker-compose -f  /usr/local/bin/fabric_base/elk/docker-compose.yml --env-file /usr/local/bin/fabric_base/fabric-docker-images/elk/.env up
 
 	#fin
 
