@@ -134,8 +134,10 @@ else
 	wait
 
 	#issue
+	#https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html
 
-	subscription-manager repos --enable ansible-2.9-for-rhel-8-x86_64-rpms
+	#only needed for ansible engine
+	#subscription-manager repos --enable ansible-2.9-for-rhel-8-x86_64-rpms
 
 	wait
 
