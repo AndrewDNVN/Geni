@@ -5,6 +5,14 @@ This Repo is for all of the currnet tooling that I am using to build out a test 
 
 install.sh is used to install all necessary tooling for the project testbed either on CentOS (7) or Ubuntu (20.04).
 
+  syntax for install.sh: sudo ./install.sh $usr_name $usr_name_elk $password_elk 
+  
+  $usr_name is for the local user to be able to access the docker containers
+  
+  $usr_name_elk is for the user name to login into the elk stack
+  
+  $password is the password used to login into the elk stack
+  
 'GENI_TO_FABRIC_SAMPLE_NETWORK' is the test spec I used to test and set a standard for install.sh.
 
 # -----------------------------------------------------------------------------
