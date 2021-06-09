@@ -3,7 +3,7 @@
 
 This Repo is for all of the currnet tooling that I am using to build out a test bed for the fabric project.
 
-install.sh is used to install all necessary tooling for the project testbed either on CentOS or Ubuntu.
+install.sh is used to install all necessary tooling for the project testbed either on CentOS (7) or Ubuntu (20.04).
 
 'GENI_TO_FABRIC_SAMPLE_NETWORK' is the test spec I used to test and set a standard for install.sh.
 
