@@ -21,7 +21,7 @@ usr_name=$1
 #checking for Ubuntu
 if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
-	echo "${blue}Found Ubuntu. ${reset}"
+	echo "${blue}Found Ubuntu.${reset}"
 	  
 	apt -y install software-properties-common
 
@@ -53,7 +53,7 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	echo "${red}Installing docker if not present.${reset}"
 
-	#installing over https
+	#installing over https for docker download
 
  	apt-get -y install apt-transport-https ca-certificates curl gnupg lsb-release
 
@@ -61,11 +61,11 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
  	#https://docs.docker.com/engine/install/ubuntu/
 
- 	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+ 	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
  	#setting repo
 
-	echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+	echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
    	
    	apt-get -y install docker-ce docker-ce-cli containerd.io docker.io
 
@@ -75,7 +75,7 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
    	docker run hello-world
 
-	echo "${red}Pulling Docker images from github ${reset}"
+	echo "${red}Pulling Docker images from github.${reset}"
 
 	curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
@@ -83,7 +83,7 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	wait
 
-	git clone https://github.com/fabric-testbed/fabric-docker-images.git
+	git clone https://github.com/fabric-testbed/fabric-docker-images.git /usr/local/bin/
 
 	wait
 
@@ -107,7 +107,7 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	#this is a poor implementation
 
-	htpasswd -bcm  ~/fabric-docker-images/elk/nginx/etc/.htpasswd.user $usr_name_elk $passwd_elk
+	htpasswd -bcm  /usr/local/bin/fabric-docker-images/elk/nginx/etc/.htpasswd.user $usr_name_elk $passwd_elk
 
 	wait
 
@@ -115,7 +115,7 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	echo "${red}Installed all needed tools. Brining up elk.${reset}"
 
-	docker-compose -f  ~/fabric-docker-images/elk/docker-compose.yml --env-file ~/fabric-docker-images/elk/.env up
+	docker-compose -f  /usr/local/bin/fabric-docker-images/elk/docker-compose.yml --env-file /usr/local/bin/fabric-docker-images/elk/.env up
 
 	#fin
 	
@@ -190,7 +190,7 @@ else
 
 	wait
 
-	git clone https://github.com/fabric-testbed/fabric-docker-images.git
+	git clone https://github.com/fabric-testbed/fabric-docker-images.git /usr/local/bin/
 
 	wait
 
@@ -212,13 +212,13 @@ else
 
 	#setting up user and password from command line
 
-	htpasswd -bcm  ~/fabric-docker-images/elk/nginx/etc/.htpasswd.user $usr_name_elk $passwd_elk
+	htpasswd -bcm  /usr/local/bin/fabric-docker-images/elk/nginx/etc/.htpasswd.user $usr_name_elk $passwd_elk
 
 	wait
 
 	echo "${red}Installed all needed tools. Brining up elk.${reset}"
 
-	docker-compose -f  ~/fabric-docker-images/elk/docker-compose.yml --env-file ~/fabric-docker-images/elk/.env up
+	docker-compose -f  /usr/local/bin/fabric-docker-images/elk/docker-compose.yml --env-file /usr/local/bin/fabric-docker-images/elk/.env up
 
 	#fin
 
