@@ -106,7 +106,7 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	#still issues here with the correct settings
 
-	htpasswd -bc  /usr/local/bin/fabric_base/elk/nginx/etc/.htpasswd.user $usr_name_elk $passwd_elk
+	htpasswd -b -c  /usr/local/bin/fabric_base/elk/nginx/etc/.htpasswd.user $usr_name_elk $passwd_elk
 
 	wait
 
@@ -211,7 +211,7 @@ else
 
 	#still issues here with the correct settings
 
-	htpasswd -bc  /usr/local/bin/fabric_base/elk/nginx/etc/.htpasswd.user $usr_name_elk $passwd_elk
+	htpasswd -b -c  /usr/local/bin/fabric_base/elk/nginx/etc/.htpasswd.user $usr_name_elk $passwd_elk
 
 	wait
 
