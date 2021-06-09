@@ -100,7 +100,11 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	echo "${red}Set folders.${reset}"
 
-	#adding user to docker group to manage
+	# echo "${red}Creating Prometheus directories and files.${reset}"
+
+	# mkdir /usr/local/bin/etc
+
+	# adding user to docker group to manage
 
 	usermod -aG docker $usr_name
 
