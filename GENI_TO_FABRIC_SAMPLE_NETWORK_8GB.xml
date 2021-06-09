@@ -1,0 +1,126 @@
+<rspec xmlns="http://www.geni.net/resources/rspec/3" xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" xmlns:tour="http://www.protogeni.net/resources/rspec/ext/apt-tour/1" xmlns:jacks="http://www.protogeni.net/resources/rspec/ext/jacks/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.geni.net/resources/rspec/3    http://www.geni.net/resources/rspec/3/request.xsd" type="request">
+<node xmlns="http://www.geni.net/resources/rspec/3" client_id="Measurement-Node" component_manager_id="urn:publicid:IDN+instageni.rnoc.gatech.edu+authority+cm">
+<icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg"/>
+<sliver_type xmlns="http://www.geni.net/resources/rspec/3" name="emulab-xen">
+	<emulab:xen cores="4" ram="8192" disk="5"/>
+<disk_image xmlns="http://www.geni.net/resources/rspec/3" name="urn:publicid:IDN+emulab.net+image+emulab-ops:CENTOS7-64-STD"/>
+</sliver_type>
+<services xmlns="http://www.geni.net/resources/rspec/3"/>
+<interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-1">
+<ip address="10.10.1.2" netmask="255.255.255.0" type="ipv4"/>
+</interface>
+<interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-2">
+<ip address="10.10.2.1" netmask="255.255.255.0" type="ipv4"/>
+</interface>
+<interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-7">
+<ip address="10.10.4.2" netmask="255.255.255.0" type="ipv4"/>
+</interface>
+<routable_control_ip xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1"/>
+</node>
+<node xmlns="http://www.geni.net/resources/rspec/3" client_id="Usr-1" component_manager_id="urn:publicid:IDN+instageni.rnoc.gatech.edu+authority+cm">
+<icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/default.svg"/>
+<sliver_type xmlns="http://www.geni.net/resources/rspec/3" name="emulab-xen">
+<disk_image xmlns="http://www.geni.net/resources/rspec/3" name="urn:publicid:IDN+emulab.net+image+emulab-ops:UBUNTU20-64-STD"/>
+</sliver_type>
+<services xmlns="http://www.geni.net/resources/rspec/3"/>
+<interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-3">
+<ip address="10.10.2.2" netmask="255.255.255.0" type="ipv4"/>
+</interface>
+<interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-4">
+<ip address="10.10.3.1" netmask="255.255.255.0" type="ipv4"/>
+</interface>
+<interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-9">
+<ip address="10.10.5.2" netmask="255.255.255.0" type="ipv4"/>
+</interface>
+</node>
+<node xmlns="http://www.geni.net/resources/rspec/3" client_id="Usr-2" component_manager_id="urn:publicid:IDN+instageni.rnoc.gatech.edu+authority+cm">
+<icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/default.svg"/>
+<sliver_type xmlns="http://www.geni.net/resources/rspec/3" name="emulab-xen">
+<disk_image xmlns="http://www.geni.net/resources/rspec/3" name="urn:publicid:IDN+emulab.net+image+emulab-ops:UBUNTU20-64-STD"/>
+</sliver_type>
+<services xmlns="http://www.geni.net/resources/rspec/3"/>
+<interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-0">
+<ip address="10.10.1.1" netmask="255.255.255.0" type="ipv4"/>
+</interface>
+<interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-5">
+<ip address="10.10.3.2" netmask="255.255.255.0" type="ipv4"/>
+</interface>
+<interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-10">
+<ip address="10.10.6.1" netmask="255.255.255.0" type="ipv4"/>
+</interface>
+</node>
+<node xmlns="http://www.geni.net/resources/rspec/3" client_id="Usr-3" component_manager_id="urn:publicid:IDN+instageni.rnoc.gatech.edu+authority+cm">
+<icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/default.svg"/>
+<sliver_type xmlns="http://www.geni.net/resources/rspec/3" name="emulab-xen">
+<disk_image xmlns="http://www.geni.net/resources/rspec/3" name="urn:publicid:IDN+emulab.net+image+emulab-ops:UBUNTU20-64-STD"/>
+</sliver_type>
+<services xmlns="http://www.geni.net/resources/rspec/3"/>
+<interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-6">
+<ip address="10.10.4.1" netmask="255.255.255.0" type="ipv4"/>
+</interface>
+<interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-8">
+<ip address="10.10.5.1" netmask="255.255.255.0" type="ipv4"/>
+</interface>
+<interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-11">
+<ip address="10.10.6.2" netmask="255.255.255.0" type="ipv4"/>
+</interface>
+</node>
+<node xmlns:color="http://www.geni.net/resources/rspec/ext/color/2" xmlns:gemini="http://www.geni.net/resources/rspec/ext/gemini/1" client_id="GDGN1" exclusive="false" component_manager_id="urn:publicid:IDN+instageni.rnoc.gatech.edu+authority+cm">
+<emulab:routable_control_ip xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1"/>
+<sliver_type name="emulab-xen">
+<disk_image name="urn:publicid:IDN+emulab.net+image+emulab-ops:GD18040420"/>
+</sliver_type>
+<color:resource_color xmlns:color="http://www.geni.net/resources/rspec/ext/color/2" xmlns:gemini="http://www.geni.net/resources/rspec/ext/gemini/1" color="gemini">
+<color:xmlblob xmlns:gemini="http://www.geni.net/resources/rspec/ext/gemini/1">
+<color:blob xmlns:gemini="http://www.geni.net/resources/rspec/ext/gemini/1">
+<gemini:node xmlns:gemini="http://www.geni.net/resources/rspec/ext/gemini/1" type="global_node">
+<gemini:monitor_urn name=""/>
+</gemini:node>
+</color:blob>
+</color:xmlblob>
+</color:resource_color>
+<services xmlns="http://www.geni.net/resources/rspec/3"/>
+</node>
+<link xmlns="http://www.geni.net/resources/rspec/3" client_id="link-0">
+<interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-0"/>
+<interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-1"/>
+
+<component_manager xmlns="http://www.geni.net/resources/rspec/3" name="urn:publicid:IDN+instageni.rnoc.gatech.edu+authority+cm"/>
+
+
+</link>
+<link xmlns="http://www.geni.net/resources/rspec/3" client_id="link-1">
+<interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-2"/>
+<interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-3"/>
+
+<component_manager xmlns="http://www.geni.net/resources/rspec/3" name="urn:publicid:IDN+instageni.rnoc.gatech.edu+authority+cm"/>
+
+
+</link>
+<link xmlns="http://www.geni.net/resources/rspec/3" client_id="link-2">
+<interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-4"/>
+<interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-5"/>
+
+<component_manager xmlns="http://www.geni.net/resources/rspec/3" name="urn:publicid:IDN+instageni.rnoc.gatech.edu+authority+cm"/>
+</link>
+<link xmlns="http://www.geni.net/resources/rspec/3" client_id="link-3">
+<interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-6"/>
+<interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-7"/>
+
+<component_manager xmlns="http://www.geni.net/resources/rspec/3" name="urn:publicid:IDN+instageni.rnoc.gatech.edu+authority+cm"/>
+
+
+</link>
+<link xmlns="http://www.geni.net/resources/rspec/3" client_id="link-4">
+<interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-8"/>
+<interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-9"/>
+
+<component_manager xmlns="http://www.geni.net/resources/rspec/3" name="urn:publicid:IDN+instageni.rnoc.gatech.edu+authority+cm"/>
+</link>
+<link xmlns="http://www.geni.net/resources/rspec/3" client_id="link-5">
+<interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-10"/>
+<interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-11"/>
+
+<component_manager xmlns="http://www.geni.net/resources/rspec/3" name="urn:publicid:IDN+instageni.rnoc.gatech.edu+authority+cm"/>
+</link>
+</rspec>
