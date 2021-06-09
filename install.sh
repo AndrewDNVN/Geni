@@ -36,7 +36,7 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	wait
 
-	echo "${red}ansible installed.${reset}"
+	echo "${red}Ansible installed.${reset}"
 
 	#testing the install correctly
 
@@ -66,11 +66,11 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
    	
-   	apt-get -y install docker-ce docker-ce-cli containerd.io docker.io
+   	apt -y install docker-ce docker-ce-cli containerd.io 
+
+   	apt -y install docker.io
 
    	echo "${red}Testing docker.${reset}"
-
-   	systemctl start docker
 
    	docker run hello-world
 
