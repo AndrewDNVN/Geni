@@ -17,6 +17,8 @@ usr_name=$1
 usr_name_elk=$2
 passwd_elk=$3
 
+#todo: https://www.elastic.co/blog/configuring-ssl-tls-and-https-to-secure-elasticsearch-kibana-beats-and-logstash
+
 #checking for Ubuntu
 if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
