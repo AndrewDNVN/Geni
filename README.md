@@ -17,6 +17,10 @@ install.sh is used to install all necessary tooling for the project testbed eith
   
   There are two versions of the Spec one with 16gb of ram the other 8gb of ram. 
   This is labeled in the file name.
+  
+  
+  # TODO
+    - Fixing htpasswd from command line call
 
 # -----------------------------------------------------------------------------
 # Copyright (c) 2020 University of Kentucky
