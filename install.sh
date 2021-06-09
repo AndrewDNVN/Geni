@@ -10,12 +10,12 @@ green=`tput setaf 2`
 blue=`tput setaf 4`
 reset=`tput sgr0`
 
-#This is to login into the elk stack 
-usr_name_elk="fabricadmin"
-passwd_elk=$2
-
 #usr_name is for the user on the system themselves for the docker containers
 usr_name=$1
+
+#This is to login into the elk stack 
+usr_name_elk=$2
+passwd_elk=$3
 
 
 #checking for Ubuntu
