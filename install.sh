@@ -17,7 +17,6 @@ usr_name=$1
 usr_name_elk=$2
 passwd_elk=$3
 
-
 #checking for Ubuntu
 if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
@@ -83,7 +82,7 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	wait
 
-	git clone https://github.com/fabric-testbed/fabric-docker-images.git /usr/local/bin/
+	git clone https://github.com/fabric-testbed/fabric-docker-images.git /usr/local/bin/fabric_base/
 
 	wait
 
@@ -107,7 +106,7 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	#this is a poor implementation
 
-	htpasswd -bcm  /usr/local/bin/fabric-docker-images/elk/nginx/etc/.htpasswd.user $usr_name_elk $passwd_elk
+	htpasswd -bcm  /usr/local/bin/fabric_base/fabric-docker-images/elk/nginx/etc/.htpasswd.user $usr_name_elk $passwd_elk
 
 	wait
 
@@ -115,14 +114,14 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	echo "${red}Installed all needed tools. Brining up elk.${reset}"
 
-	docker-compose -f  /usr/local/bin/fabric-docker-images/elk/docker-compose.yml --env-file /usr/local/bin/fabric-docker-images/elk/.env up
+	docker-compose -f /usr/local/bin/fabric_base/fabric-docker-images/elk/docker-compose.yml --env-file /usr/local/bin/fabric_base/fabric-docker-images/elk/.env up
 
 	#fin
 	
 
 else
 
-	#script designd for CentOs or Ubuntu
+	#script designd for CentOs
 
 	echo "${blue}Found CentOs.${reset}"
 
@@ -190,15 +189,13 @@ else
 
 	wait
 
-	git clone https://github.com/fabric-testbed/fabric-docker-images.git /usr/local/bin/
+	git clone https://github.com/fabric-testbed/fabric-docker-images.git /usr/local/bin/fabric_base/
 
 	wait
 
 	sysctl -w vm.max_map_count=262144 
 
 	yum -y install -y httpd-tools
-
-	chmod +x /usr/local/bin/docker-compose
 
 	echo "${green}Checking docker-compose version.${reset}"
 
@@ -212,13 +209,13 @@ else
 
 	#setting up user and password from command line
 
-	htpasswd -bcm  /usr/local/bin/fabric-docker-images/elk/nginx/etc/.htpasswd.user $usr_name_elk $passwd_elk
+	htpasswd -bcm  /usr/local/bin/fabric_base/fabric-docker-images/elk/nginx/etc/.htpasswd.user $usr_name_elk $passwd_elk
 
 	wait
 
 	echo "${red}Installed all needed tools. Brining up elk.${reset}"
 
-	docker-compose -f  /usr/local/bin/fabric-docker-images/elk/docker-compose.yml --env-file /usr/local/bin/fabric-docker-images/elk/.env up
+	docker-compose -f  /usr/local/bin/fabric_base/fabric-docker-images/elk/docker-compose.yml --env-file /usr/local/bin/fabric_base/fabric-docker-images/elk/.env up
 
 	#fin
 
