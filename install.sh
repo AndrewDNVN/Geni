@@ -124,7 +124,7 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	#bringing up the elk stack fully
 
-	echo "${red}Installing ansible-galaxy to build beats. Brining up elk.${reset}"
+	echo "${red}Installing ansible-galaxy to build beats.${reset}"
 
 	# this will bring in the most recent version
 
@@ -233,7 +233,7 @@ else
 
 	wait
 
-	echo "${red}Installing ansible-galaxy to build beats. Brining up elk.${reset}"
+	echo "${red}Installing ansible-galaxy to build beats.${reset}"
 
 	# this will bring in the most recent version
 
