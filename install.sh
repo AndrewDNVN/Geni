@@ -4,12 +4,14 @@
 # tested on CentOs 7: working 6/09/2021
 # tested on CentOs 8: working 6/10/2021
 
-#installs ansible and the docker scripts
-#added in colored output for ease of following sctipts
+# installs ansible and the docker scripts
+# then brings up the full stack
+# added in colored output for ease of following sctipts
 
 #need to implement password I/O for the fabricadmin user
+	#todo: https://www.elastic.co/blog/configuring-ssl-tls-and-https-to-secure-elasticsearch-kibana-beats-and-logstash
 
-# adding https://github.com/elastic/ansible-beats
+#added https://github.com/elastic/ansible-beats
 
 red=`tput setaf 1`
 green=`tput setaf 2`
@@ -22,8 +24,6 @@ usr_name=$1
 #This is to login into the elk stack 
 usr_name_elk=$2
 passwd_elk=$3
-
-#todo: https://www.elastic.co/blog/configuring-ssl-tls-and-https-to-secure-elasticsearch-kibana-beats-and-logstash
 
 #checking for Ubuntu
 if [ -n "$(uname -a | grep Ubuntu)" ]; then
