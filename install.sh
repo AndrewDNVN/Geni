@@ -130,6 +130,8 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	ansible-galaxy install elastic.beats
 
+	ansible-galaxy init elastic.beats
+
 	wait
 
 	echo "${red}Installed all needed tools. Brining up elk.${reset}"
@@ -238,6 +240,8 @@ else
 	# this will bring in the most recent version
 
 	ansible-galaxy install elastic.beats
+
+	ansible-galaxy init elastic.beats
 
 	wait
 
