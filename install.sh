@@ -9,6 +9,8 @@
 
 #need to implement password I/O for the fabricadmin user
 
+# adding https://github.com/elastic/ansible-beats
+
 red=`tput setaf 1`
 green=`tput setaf 2`
 blue=`tput setaf 4`
@@ -122,6 +124,14 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	#bringing up the elk stack fully
 
+	echo "${red}Installing ansible-galaxy to build beats. Brining up elk.${reset}"
+
+	# this will bring in the most recent version
+
+	ansible-galaxy install elastic.beats
+
+	wait
+
 	echo "${red}Installed all needed tools. Brining up elk.${reset}"
 
 	/usr/local/bin/docker-compose -f /usr/local/bin/fabric_base/elk/docker-compose.yml --env-file /usr/local/bin/fabric_base/elk/.env up
@@ -220,6 +230,14 @@ else
 	#still issues here with the correct settings
 
 	htpasswd -b -c  /usr/local/bin/fabric_base/elk/nginx/etc/.htpasswd.user $usr_name_elk $passwd_elk
+
+	wait
+
+	echo "${red}Installing ansible-galaxy to build beats. Brining up elk.${reset}"
+
+	# this will bring in the most recent version
+
+	ansible-galaxy install elastic.beats
 
 	wait
 
