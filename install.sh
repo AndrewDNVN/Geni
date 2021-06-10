@@ -124,11 +124,6 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	#bringing up the elk stack fully
 
-<<<<<<< Updated upstream
-
-=======
-	
->>>>>>> Stashed changes
 	echo "${red}Installed all needed tools. Brining up elk.${reset}"
 
 	/usr/local/bin/docker-compose -f /usr/local/bin/fabric_base/elk/docker-compose.yml --env-file /usr/local/bin/fabric_base/elk/.env up
