@@ -10,7 +10,7 @@
 #need to implement password I/O for the fabricadmin user
 	#todo: https://www.elastic.co/blog/configuring-ssl-tls-and-https-to-secure-elasticsearch-kibana-beats-and-logstash
 
-#added https://github.com/elastic/ansible-beats
+#added https://github.com/elastic/ansible-beats 
 
 red=`tput setaf 1`
 green=`tput setaf 2`
