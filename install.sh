@@ -127,6 +127,8 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
 	# this will bring in the most recent version
 
+	# this is used to make the elk the ansible hub and can run scripts beyond this
+
 	ansible-galaxy install elastic.beats
 
 	ansible-galaxy init elastic.beats
