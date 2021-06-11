@@ -149,7 +149,15 @@ else
 
 	echo "${blue}Found CentOs.${reset}"
 
-	yum -y install epel-release
+	yum -y install epel-release gcc openssl-devel bzip2-devel libffi-devel centos-release-scl
+
+	wait
+
+	echo "${red}Python installed.${reset}"
+
+	yum -y install rh-python36
+
+	yum -y groupinstall 'Development Tools'
 
 	wait
 
