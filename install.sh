@@ -63,18 +63,18 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 	echo "${red}Set folders.${reset}"
 	# echo "${red}Creating Prometheus directories and files.${reset}"
 	# mkdir /usr/local/bin/etc
-	# adding user to docker group to manage
-	usermod -aG docker $usr_name
+	# adding user to docker group to man
 	#this is a poor implementation
-	#still issues here with the correct settings
+	#still issues here with the correct settingsage
+	usermod -aG docker $usr_name
 	htpasswd -b -c  /usr/local/bin/fabric_base/elk/nginx/etc/.htpasswd.user $usr_name_elk $passwd_elk
 	wait
 	#bringing up the elk stack fully
 	echo "${red}Installing ansible-galaxy to build beats.${reset}"
 	# this will bring in the most recent version
-	# this is used to make the elk the ansible hub and can run scripts beyond this
+	# this is used to make the end can run scripts beyond this
 	ansible-galaxy install elastic.beats
-	ansible-galaxy init elastic.beats
+	ansible-galaxy init elastic.beatslk the ansible hub a
 	wait
 	echo "${red}Installed all needed tools. Brining up elk.${reset}"
 	/usr/local/bin/docker-compose -f /usr/local/bin/fabric_base/elk/docker-compose.yml --env-file /usr/local/bin/fabric_base/elk/.env up
