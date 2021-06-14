@@ -1,5 +1,5 @@
 #!/bin/bash
-# tested on Ubunutu 20.04: working 6/09/2021
+# tested on Ubunutu 20.04: working 6/14/2021
 # tested on CentOs 7: working 6/09/2021
 # tested on CentOs 8: working 6/14/2021
 # installs ansible and the docker scripts
@@ -191,9 +191,7 @@ else
 
 	echo "${red}Pulling Elk-Docker scripts from github.${reset}"
 
-	curl -L "https://github.com/docker/compose/releases/download/1.25.5/
-
-	docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+	curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
 	chmod +x /usr/local/bin/docker-compose
 
