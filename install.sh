@@ -1,7 +1,7 @@
 #!/bin/bash
 # tested on Ubunutu 20.04: working 6/09/2021
 # tested on CentOs 7: working 6/09/2021
-# tested on CentOs 8: working 6/10/2021
+# tested on CentOs 8: working 6/14/2021
 # installs ansible and the docker scripts
 # then brings up the full stack
 # fixning file line endings

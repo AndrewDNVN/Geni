@@ -8,3 +8,7 @@ sudo bash
 
 exit
 
+grep MemTotal /proc/meminfo
+
+#^checking if the mounting worked should be 16384000
+
