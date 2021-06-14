@@ -4,6 +4,7 @@
 # tested on CentOs 8: working 6/10/2021
 # installs ansible and the docker scripts
 # then brings up the full stack
+# fixning file line endings
 # added in colored output for ease of following sctipts
 #need to implement password I/O for the fabricadmin user
 	#todo: https://www.elastic.co/blog/configuring-ssl-tls-and-https-to-secure-elasticsearch-kibana-beats-and-logstash
