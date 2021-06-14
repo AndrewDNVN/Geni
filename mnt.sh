@@ -6,6 +6,8 @@ sudo bash
 
 /usr/testbed/bin/mkextrafs /mnt 
 
+wait
+
 exit
 
 grep MemTotal /proc/meminfo
