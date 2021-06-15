@@ -2,15 +2,10 @@
 
 #mounting script
 
-sudo bash
-
-/usr/testbed/bin/mkextrafs /mnt 
+bash /usr/testbed/bin/mkextrafs /mnt 
 
 wait
 
-exit
-
-grep MemTotal /proc/meminfo
-
+awk '/MemTotal/ { print $2 }' /proc/meminfo
 #^checking if the mounting worked should be 16384000
 
