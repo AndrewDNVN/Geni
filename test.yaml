@@ -1,0 +1,35 @@
+# sample playbook for filebeats
+- name: Testing setup of filebeat
+  gatherfacts: true
+  hosts: usrNodes #This is what I think it should be 
+  # infers that ssh is already avaible to the elk node
+  become: yes
+  tasks: # found on https://uci.bootcampcontent.com/EmperorForgotten/elk-stack-project/blob/master/Ansible-Playbooks/filebeat-playbook.yml
+  
+  - name: Install and setup filebeat
+    roles:
+      - role: elastic.beats
+    vars:
+      beats_version: 7.13.2
+      beat: filebeat
+      beat_conf:
+        filebeat:
+          inputs:
+            - type: log
+              enabled: true
+              paths:
+                - /var/log/*.log
+                
+  - name: Install and setup packetbeat
+    roles:
+      - role: elastic.beats
+    vars:
+      beats_version: 7.13.2
+      beat: packetbeat
+      beat_conf:
+        filebeat:
+          inputs:
+            - type: log
+              enabled: true
+              paths:
+                - /var/log/*.log
