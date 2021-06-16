@@ -18,9 +18,15 @@ install.sh is used to install all necessary tooling for the project testbed eith
   There are two versions of the Spec one with 16gb of ram the other 8gb of ram. 
   This is labeled in the file name.
   
+  mnt.sh is a quick script to mount the extra space required for the elk stack.
+
+  test.yaml is the start of a playbook, to install the beats on the various user nodes.
+  This script is based off of the excellent https://galaxy.ansible.com/elastic/beats . 
+
   
   # TODO
     - Fixing htpasswd from command line call
+    - Fixing the ansible calls in test.yaml
 
 # -----------------------------------------------------------------------------
 # Copyright (c) 2020 University of Kentucky

@@ -2,7 +2,7 @@
 
 #mounting script
 
-bash /usr/testbed/bin/mkextrafs /mnt 
+/usr/testbed/bin/mkextrafs /mnt 
 
 wait
 

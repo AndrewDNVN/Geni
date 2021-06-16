@@ -230,7 +230,9 @@ else
 	echo "${red}Installing ansible-galaxy to build beats.${reset}"
 	# this will bring in the most recent version
 	ansible-galaxy install elastic.beats
+	
 	ansible-galaxy init elastic.beats
+
 	wait
 
 	echo "${red}Installed all needed tools. Brining up elk.${reset}"
