@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # tested on Ubunutu 20.04: working 6/14/2021
 # tested on CentOs 7: working 6/09/2021
 # tested on CentOs 8: working 6/14/2021
@@ -222,6 +223,7 @@ else
 	#setting up user and password from command line
 	#still issues here with the correct settings
 	htpasswd -b -c  /usr/local/bin/fabric_base/elk/nginx/etc/.htpasswd.user $usr_name_elk $passwd_elk
+
 	wait
 
 	echo "${red}Installing ansible-galaxy to build beats.${reset}"
@@ -231,7 +233,7 @@ else
 	wait
 
 	echo "${red}Installed all needed tools. Brining up elk.${reset}"
-	
+
 	/usr/local/bin/docker-compose -f  /usr/local/bin/fabric_base/elk/docker-compose.yml --env-file /usr/local/bin/fabric_base/elk/.env up
 
 	# could be changed to only bring up parts of the stack
