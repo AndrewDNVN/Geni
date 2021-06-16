@@ -21,6 +21,7 @@ usr_name=$1
 
 #This is to login into the elk stack 
 usr_name_elk=$2
+# ^could be hard set to fabricadmin
 passwd_elk=$3
 #checking for Ubuntu
 if [ -n "$(uname -a | grep Ubuntu)" ]; then
@@ -123,6 +124,8 @@ if [ -n "$(uname -a | grep Ubuntu)" ]; then
 	echo "${red}Installed all needed tools. Brining up elk.${reset}"
 
 	/usr/local/bin/docker-compose -f /usr/local/bin/fabric_base/elk/docker-compose.yml --env-file /usr/local/bin/fabric_base/elk/.env up
+
+	# could be changed to only bring up parts of the stack
 
 	#fin
 	
@@ -228,6 +231,10 @@ else
 	wait
 
 	echo "${red}Installed all needed tools. Brining up elk.${reset}"
+	
 	/usr/local/bin/docker-compose -f  /usr/local/bin/fabric_base/elk/docker-compose.yml --env-file /usr/local/bin/fabric_base/elk/.env up
+
+	# could be changed to only bring up parts of the stack
+
 	#fin
 fi
