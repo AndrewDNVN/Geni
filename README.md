@@ -26,10 +26,11 @@ install.sh is used to install all necessary tooling for the project testbed eith
   
   # TODO
     - Fixing htpasswd from command line call
-    - Fixing the ansible calls in test.yaml
+    - Finishing test.yaml
+
 
 # -----------------------------------------------------------------------------
-# Copyright (c) 2020 University of Kentucky
+# Copyright (c) 2021 University of Kentucky
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and/or hardware specification (the "Work") to deal in the
 # Work without restriction, including without limitation the rights to use,

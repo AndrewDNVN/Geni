@@ -1,7 +1,7 @@
 ---
 # sample playbook for filebeats
 - name: Testing setup of filebeat
-  gatherfacts: true
+  # gatherfacts: true
   hosts: usrNodes #This is what I think it should be 
   # infers that ssh is already avaible to the elk node
   become: yes
