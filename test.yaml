@@ -1,3 +1,4 @@
+---
 # sample playbook for filebeats
 - name: Testing setup of filebeat
   gatherfacts: true

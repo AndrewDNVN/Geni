@@ -24,6 +24,7 @@ usr_name=$1
 usr_name_elk=$2
 # ^could be hard set to fabricadmin
 passwd_elk=$3
+
 #checking for Ubuntu
 if [ -n "$(uname -a | grep Ubuntu)" ]; then
 
