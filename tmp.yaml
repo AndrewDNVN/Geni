@@ -9,20 +9,25 @@
       src: https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.13.2-linux-x86_64.tar.gz
       dest: /usr/local/bin/
       remote_src: True
-      mode: 770
+      mode: 0775
 
     # Use copy module
   - name: Drop in filebeat.yml
     copy: 
       src: /users/amdo257/filebeat.yml
       dest: /usr/local/bin/filebeat-7.13.2-linux-x86_64/
-      mode: 770
+      #mode: 0770
+  
+  - name: Setting correct permissions on filebeat.yml
+    file:
+      path: /usr/local/bin/filebeat-7.13.2-linux-x86_64/filebeat.yml
+      #mode: 0770
 
     # Use command module
   - name: enable and configure system module
     become_method: enable
     command: /usr/local/bin/filebeat-7.13.2-linux-x86_64/filebeat modules enable
-    
+
     # Use command module
   - name: Setup filebeat
     become_method: enable

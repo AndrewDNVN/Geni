@@ -7,7 +7,7 @@
 # You can find the full configuration reference here:
 # https://www.elastic.co/guide/en/beats/filebeat/index.html
 
-
+filebeat.config.modules.path: ${path.config}/modules.d/*.yml
 #==========================  Modules configuration =============================
 filebeat.modules:
 
