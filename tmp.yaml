@@ -1,0 +1,34 @@
+---
+- name: Installing and Launch Filebeat
+  hosts: usrNodes
+  become: yes
+  tasks:
+    # Use command module
+  - name: Download filebeat 
+    unarchive: 
+      src: https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.13.2-linux-x86_64.tar.gz
+      dest: /usr/local/bin/
+      remote_src: True
+      mode: 770
+
+    # Use copy module
+  - name: Drop in filebeat.yml
+    copy: 
+      src: /users/amdo257/filebeat.yml
+      dest: /usr/local/bin/filebeat-7.13.2-linux-x86_64/
+      mode: 770
+
+    # Use command module
+  - name: enable and configure system module
+    become_method: enable
+    command: /usr/local/bin/filebeat-7.13.2-linux-x86_64/filebeat modules enable
+    
+    # Use command module
+  - name: Setup filebeat
+    become_method: enable
+    command: /usr/local/bin/filebeat-7.13.2-linux-x86_64/filebeat setup
+
+    # Use command module
+  - name: Start filebeat service
+    become_method: enable
+    command: service filebeat start
