@@ -1,0 +1,10 @@
+[usrNodes]
+node-0 ansible_host=pcvm2-4.pks2.sdn.uky.edu
+node-1 ansible_host=pcvm2-5.pks2.sdn.uky.edu
+node-2 ansible_host=pcvm2-6.pks2.sdn.uky.edu
+
+[usrNodes:vars]
+ansible_connection=ssh
+ansible_user=amdo257
+ansible_ssh_private_key_file=/users/amdo257/.ssh/id_geni_ssh_rsa
+ansible_ssh_pass=125478963
