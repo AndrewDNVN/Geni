@@ -1,15 +1,17 @@
 ---
-- name: Installing and Launch Filebeat
+- name: Installing and Launch Filebeat in linux
   hosts: usrNodes
   become: yes
   vars:
-    local_user: tmp
+    local_user: amdo257
+    curr_version: 7.13.2
     # input the user where config files will be
   tasks:
+
     # Use command module
   - name: Download filebeat 
     unarchive: 
-      src: https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.13.2-linux-x86_64.tar.gz
+      src: https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{ curr_version }}-linux-x86_64.tar.gz
       dest: /usr/local/bin/
       remote_src: True
       validate_certs: True
@@ -19,7 +21,7 @@
   - name: Drop in filebeat.yml
     copy: 
       src: "/users/{{ local_user }}/filebeat.yml"
-      dest: /usr/local/bin/filebeat-7.13.2-linux-x86_64/
+      dest: /usr/local/bin/filebeat-{{ curr_version }}-linux-x86_64/
       mode: '0644'
 
 
@@ -29,7 +31,7 @@
     become_method: sudo
     become_user: root
     file:
-      path: /usr/local/bin/filebeat-7.13.2-linux-x86_64/filebeat.yml
+      path: /usr/local/bin/filebeat-{{ curr_version }}-linux-x86_64/filebeat.yml
       owner: "{{ ansible_effective_user_id }}"
       group: "{{ ansible_effective_group_id }}"
       mode: '0644'
@@ -37,18 +39,18 @@
   - name: Enabling Modules 
     become_method: sudo
     become_user: root
-    shell: /usr/local/bin/filebeat-7.13.2-linux-x86_64/filebeat modules enable system -c /usr/local/bin/filebeat-7.13.2-linux-x86_64/filebeat.yml
+    shell: /usr/local/bin/filebeat-{{ curr_version }}-linux-x86_64/filebeat modules enable system -c /usr/local/bin/filebeat-{{ curr_version }}-linux-x86_64/filebeat.yml
   
   - name: Running Setup
     become_method: sudo
     become_user: root
-    shell: /usr/local/bin/filebeat-7.13.2-linux-x86_64/filebeat setup -e -c /usr/local/bin/filebeat-7.13.2-linux-x86_64/filebeat.yml
+    shell: /usr/local/bin/filebeat-{{ curr_version }}-linux-x86_64/filebeat setup -e -c /usr/local/bin/filebeat-{{ curr_version }}-linux-x86_64/filebeat.yml
 
   - name: Setting proper permissions on filebeat
     become_method: sudo
     become_user: root
     file:
-      path: /usr/local/bin/filebeat-7.13.2-linux-x86_64/modules.d/system.yml 
+      path: /usr/local/bin/filebeat-{{ curr_version }}-linux-x86_64/modules.d/system.yml 
       owner: "{{ ansible_effective_user_id }}"
       group: "{{ ansible_effective_group_id }}"
       mode: '0644'
@@ -60,6 +62,20 @@
       src: "/users/{{ local_user }}/filebeat.service"
       dest: /etc/systemd/system/filebeat.service
       mode: '0644'
+
+  - name: Setup unit file Working Directory
+    replace:
+      path: /etc/systemd/system/filebeat.service
+      after: 'WorkingDirectory='
+      regexp: '\b(WorkingDirectory=)'
+      replace: /usr/local/bin/filebeat-{{ curr_version }}-linux-x86_64/
+
+  - name: Setup unit file ExecStart
+    replace:
+      path: /etc/systemd/system/filebeat.service
+      after: 'ExecStart='
+      regexp: '\b(ExecStart=)'
+      replace: /usr/local/bin/filebeat-{{ curr_version }}-linux-x86_64/filebeat -e -c /usr/local/bin/filebeat-{{ curr_version }}-linux-x86_64/filebeat.yml
 
   - name: Rebooting systemd deamon('s)
     become_method: sudo
