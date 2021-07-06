@@ -3,7 +3,7 @@
   hosts: usrNodes
   become: yes
   vars:
-    local_user: amdo257
+    local_user: 
     curr_version: 7.13.2
     # input the user where config files will be
   tasks:

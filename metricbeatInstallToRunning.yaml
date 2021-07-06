@@ -1,0 +1,93 @@
+---
+- name: Installing and Launch Metricbeat in linux
+  hosts: usrNodes
+  become: yes
+  vars:
+    local_user: 
+    curr_version: 7.13.2
+    # input the user where config files will be
+  tasks:
+
+    # Use command module
+  - name: Download metricbeat 
+    unarchive: 
+      src: https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{ curr_version }}-linux-x86_64.tar.gz
+      dest: /usr/local/bin/
+      remote_src: True
+      validate_certs: True
+      #mode: 0775
+
+    # Use copy module
+  - name: Drop in metricbeat.yml
+    copy: 
+      src: "/users/{{ local_user }}/metricbeat.yml"
+      dest: /usr/local/bin/metricbeat-{{ curr_version }}-linux-x86_64/
+      mode: '0644'
+
+
+  # use the file module
+     
+  - name: Setting proper permissions on metricbeat
+    become_method: sudo
+    become_user: root
+    file:
+      path: /usr/local/bin/metricbeat-{{ curr_version }}-linux-x86_64/metricbeat.yml
+      owner: "{{ ansible_effective_user_id }}"
+      group: "{{ ansible_effective_group_id }}"
+      mode: '0644'
+
+  - name: Enabling Modules 
+    become_method: sudo
+    become_user: root
+    shell: /usr/local/bin/metricbeat-{{ curr_version }}-linux-x86_64/metricbeat modules enable system -c /usr/local/bin/metricbeat-{{ curr_version }}-linux-x86_64/metricbeat.yml
+  
+  - name: Running Setup
+    become_method: sudo
+    become_user: root
+    shell: /usr/local/bin/metricbeat-{{ curr_version }}-linux-x86_64/metricbeat setup -e -c /usr/local/bin/metricbeat-{{ curr_version }}-linux-x86_64/metricbeat.yml
+
+  - name: Setting proper permissions on metricbeat
+    become_method: sudo
+    become_user: root
+    file:
+      path: /usr/local/bin/metricbeat-{{ curr_version }}-linux-x86_64/modules.d/system.yml 
+      owner: "{{ ansible_effective_user_id }}"
+      group: "{{ ansible_effective_group_id }}"
+      mode: '0644'
+
+  - name: Drop in metricbeat.service unit file
+    become_method: sudo
+    become_user: root
+    copy: 
+      src: "/users/{{ local_user }}/metricbeat.service"
+      dest: /etc/systemd/system/metricbeat.service
+      mode: '0644'
+
+  - name: Setup unit file Working Directory
+    replace:
+      path: /etc/systemd/system/metricbeat.service
+      after: 'WorkingDirectory='
+      regexp: '\b(WorkingDirectory=)'
+      replace: /usr/local/bin/metricbeat-{{ curr_version }}-linux-x86_64/
+
+  - name: Setup unit file ExecStart
+    replace:
+      path: /etc/systemd/system/metricbeat.service
+      after: 'ExecStart='
+      regexp: '\b(ExecStart=)'
+      replace: /usr/local/bin/metricbeat-{{ curr_version }}-linux-x86_64/metricbeat -e -c /usr/local/bin/metricbeat-{{ curr_version }}-linux-x86_64/metricbeat.yml
+
+  - name: Rebooting systemd deamon('s)
+    become_method: sudo
+    become_user: root
+    systemd:
+      daemon_reload: yes
+  
+  - name: Starting metricbeat Service
+    become_method: sudo
+    become_user: root
+    service:
+      name: metricbeat
+      state: restarted
+      enabled: yes
+
