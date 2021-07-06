@@ -1,4 +1,0 @@
-[usrNode]
-node-0 ansible_host=pc3.instageni.rnoc.gatech.edu ansible_port=27613
-node-1 ansible_host=pc3.instageni.rnoc.gatech.edu ansible_port=27614
-node-2 ansible_host=pc3.instageni.rnoc.gatech.edu ansible_port=27615
