@@ -25,8 +25,8 @@ install.sh is used to install all necessary tooling for the project testbed eith
 
   
   # TODO
-    - Fixing htpasswd from command line call
-    - Finishing test.yaml
+    - Working on pulling info from host file
+    - Moving from bash to ansible for Mesuremeant node
 
 
 # -----------------------------------------------------------------------------
