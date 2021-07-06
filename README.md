@@ -1,27 +1,20 @@
 # Geni_test
 
 
-This Repo is for all of the currnet tooling that I am using to build out a test bed for the fabric project.
+This Repo is for all of the currnet tooling that I am using to build out a test bed for the Fabric project.
 
-install.sh is used to install all necessary tooling for the project testbed either on CentOS (7) or Ubuntu (20.04).
-
-  syntax for install.sh: sudo ./install.sh $usr_name $usr_name_elk $password_elk 
-  
-  $usr_name is for the local user to be able to access the docker containers
-  
-  $usr_name_elk is for the user name to login into the elk stack
-  
-  $password_elk is the password used to login into the elk stack
   
 'GENI_TO_FABRIC_SAMPLE_NETWORK_Xgb.xml' is the test spec I used to test and set a standard for install.sh. 
   
   There are two versions of the Spec one with 16gb of ram the other 8gb of ram. 
   This is labeled in the file name.
   
-  mnt.sh is a quick script to mount the extra space required for the elk stack.
+There are five current folders, each containing ansible scripts and config files.
 
-  test.yaml is the start of a playbook, to install the beats on the various user nodes.
-  This script is based off of the excellent https://galaxy.ansible.com/elastic/beats . 
+To use the scripts serveral edits must be made currently.
+Changes must be made in each .yml file, to point to the correct ELK IP address.
+In each .yaml file the current version and local user need to be updated as well.
+In install.yaml, the elk username and password need to be set.
 
   
   # TODO
