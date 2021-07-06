@@ -15,6 +15,7 @@ To use the scripts serveral edits must be made currently.
 Changes must be made in each .yml file, to point to the correct ELK IP address.
 In each .yaml file the current version and local user need to be updated as well.
 In install.yaml, the elk username and password need to be set.
+(install.sh is depreciated)
 
   
   # TODO
