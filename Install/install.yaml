@@ -1,0 +1,113 @@
+---
+- name: Installing and Launching ELK Stack
+  # infers CentOs machine with yum package manager 
+  hosts: meas_node
+  become: yes
+  vars:
+    local_user: 
+    #curr_version: 
+    docker_compose_ver: 1.25.5
+    usr_name_elk: 
+    passwd_elk: 
+    # input the user where config files will be
+  tasks:
+
+  - name: Installing Tooling for Stack via Yum
+    become_method: sudo
+    become_user: root
+    yum:
+      name: "{{ packages }}"
+      state: latest
+    vars: 
+      packages:
+      - epel-release 
+      - gcc 
+      - openssl-devel 
+      - bzip2-devel
+      - libffi-devel
+      - centos-release-scl
+      #- rh-python36
+      - yum-utils
+      - ansible
+      - git
+      - httpd-tools
+
+  # https://lastviking.eu/install_docker_on_centos_with_ansible.html
+
+  # this seciton is for base install of docker / docker-compose
+
+  - name: Check if Docker is installed
+    shell: systemctl status docker
+    register: docker_check
+    ignore_errors: yes
+
+  - name: Download the Docker installer
+    get_url:
+      url: https://get.docker.com/
+      dest: /root/install_docker.sh
+      mode: 0700
+    when: docker_check.stderr.find('service could not be found') != -1
+
+  - name: Install Docker
+    shell: /root/install_docker.sh
+    when: docker_check.stderr.find('service could not be found') != -1
+
+  - name: Remove the Docker installer file.
+    file:
+      state: absent
+      path: /root/install_docker.sh
+
+  - name: Enable the Docker daemon in systemd
+    systemd:
+      name: docker
+      enabled: yes
+      masked: no
+
+  - name: Start the Docker daemon
+    systemd:
+      name: docker
+      state: started
+      masked: no
+
+  - name: Check if Docker Compose is installed
+    command: docker-compose --version
+    register: docker_compose_check
+    ignore_errors: yes
+
+  - name: Check Docker install
+    shell: docker run hello-world
+
+  - name: Setting vm.max_map_count
+    shell: sysctl -w vm.max_map_count=262144 
+
+  #- name: Adding local user to docker-compose
+   # shell: usermod -aG docker {{ local_user }}
+
+  - name: Download and install Docker Compose
+    get_url:
+      url: https://github.com/docker/compose/releases/download/{{ docker_compose_ver }}/docker-compose-Linux-x86_64
+      dest: /usr/bin/docker-compose
+      mode: 0755
+    when:
+      - docker_compose_check.msg is defined
+      - docker_compose_check.msg.find('No such file or directory') != -1
+
+  - name: Install ELK stack via Git
+    git:
+      repo: https://github.com/fabric-testbed/fabric-docker-images.git
+      dest: /usr/bin/fabric_base
+
+  - name: Setting Folders for ELK Stack
+    shell: /usr/bin/fabric_base/elk/setfolders.sh
+
+  - name: Setting login info for nginx
+    shell: htpasswd -b -c  /usr/bin/fabric_base/elk/nginx/etc/.htpasswd.user {{ usr_name_elk }} {{ passwd_elk }}
+
+# current issue in how long it takes the stack to run to setup
+
+ # - name: Brining Up Stack
+ #   shell: /usr/bin/docker-compose -f  /usr/bin/fabric_base/elk/docker-compose.yml --env-file /usr/bin/fabric_base/elk/.env up
+ #   async:  
+ #   poll: 
+
+

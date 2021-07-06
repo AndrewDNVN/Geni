@@ -9,8 +9,6 @@
 
 path.home: /usr/local/bin/metricbeat-7.13.2-linux-x86_64/
 path.config: /usr/local/bin/metricbeat-7.13.2-linux-x86_64/
-metricbeat.config.modules:
-path : /usr/local/bin/metricbeat-7.13.2-linux-x86_64/modules.d/*.yml
 
 # =========================== Modules configuration ============================
 
@@ -69,12 +67,12 @@ setup.kibana:
   # Scheme and port can be left out and will be set to the default (http and 5601)
   # In case you specify and additional path, the scheme is required: http://localhost:5601/path
   # IPv6 addresses should always be defined as: https://[2001:db8::1]:5601
-  host: "localhost:5601"
+  host: ":5601"
 
   protocol: "http"
 
   username: "fabricadmin"  
-  password: "Y4panXuezFUaxYf5u"
+  password: ""
 
   # Kibana Space ID
   # ID of the Kibana Space into which the dashboards should be loaded. By default,
@@ -101,7 +99,7 @@ setup.kibana:
 # ---------------------------- Elasticsearch Output ----------------------------
 output.elasticsearch:
   # Array of hosts to connect to.
-  hosts: ["localhost:9200"]
+  hosts: [":9200"]
 
   # Protocol - either `http` (default) or `https`.
   protocol: "http"
@@ -109,7 +107,7 @@ output.elasticsearch:
   # Authentication credentials - either API key or username/password.
   #api_key: "id:api_key"
   username: "fabricadmin"
-  password: "Y4panXuezFUaxYf5u"
+  password: ""
 
 # ------------------------------ Logstash Output -------------------------------
 #output.logstash:
