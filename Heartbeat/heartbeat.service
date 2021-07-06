@@ -1,0 +1,17 @@
+# https://build.opensuse.org/package/view_file/home:TNeuburger/filebeat/filebeat.service
+# heartbeat systemd service
+#
+
+[Unit]
+Description=heartbeat
+Documentation=https://www.elastic.co/guide
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+WorkingDirectory=/usr/local/bin/heartbeat-7.13.2-linux-x86_64/
+ExecStart=/usr/local/bin/heartbeat-7.13.2-linux-x86_64/heartbeat -e -c /usr/local/bin/heartbeat-7.13.2-linux-x86_64/heartbeat.yml
+
+[Install]
+WantedBy=multi-user.target
