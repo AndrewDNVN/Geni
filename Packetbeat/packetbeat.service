@@ -1,0 +1,17 @@
+# https://build.opensuse.org/package/view_file/home:TNeuburger/filebeat/filebeat.service
+# metricbeat systemd service
+#
+
+[Unit]
+Description=metricbeat
+Documentation=https://www.elastic.co/guide
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+WorkingDirectory=/usr/local/bin/metricbeat-7.13.2-linux-x86_64/
+ExecStart=/usr/local/bin/metricbeat-7.13.2-linux-x86_64/metricbeat -e -c /usr/local/bin/metricbeat-7.13.2-linux-x86_64/metricbeat.yml
+
+[Install]
+WantedBy=multi-user.target
