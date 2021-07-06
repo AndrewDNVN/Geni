@@ -6,6 +6,7 @@
     local_user: 
     curr_version: 7.13.2
     # input the user where config files will be
+    # TDOD: Make it so that the packetbeat.yml can be editied per interface currently set to 'any'
   tasks:
 
     # Use command module
@@ -36,24 +37,10 @@
       group: "{{ ansible_effective_group_id }}"
       mode: '0644'
 
-  - name: Enabling Modules 
-    become_method: sudo
-    become_user: root
-    shell: /usr/local/bin/packetbeat-{{ curr_version }}-linux-x86_64/packetbeat modules enable system -c /usr/local/bin/packetbeat-{{ curr_version }}-linux-x86_64/packetbeat.yml
-  
   - name: Running Setup
     become_method: sudo
     become_user: root
     shell: /usr/local/bin/packetbeat-{{ curr_version }}-linux-x86_64/packetbeat setup -e -c /usr/local/bin/packetbeat-{{ curr_version }}-linux-x86_64/packetbeat.yml
-
-  - name: Setting proper permissions on packetbeat
-    become_method: sudo
-    become_user: root
-    file:
-      path: /usr/local/bin/packetbeat-{{ curr_version }}-linux-x86_64/modules.d/system.yml 
-      owner: "{{ ansible_effective_user_id }}"
-      group: "{{ ansible_effective_group_id }}"
-      mode: '0644'
 
   - name: Drop in packetbeat.service unit file
     become_method: sudo
