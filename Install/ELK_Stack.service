@@ -1,0 +1,17 @@
+# 
+# ELK Stack systemd service
+#
+
+[Unit]
+Description=ELK_Stack
+Documentation=https://github.com/fabric-testbed/fabric-docker-images/tree/master/elk
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+WorkingDirectory=/usr/bin/fabric_base/
+ExecStart=/usr/bin/docker-compose -f  /usr/bin/fabric_base/elk/docker-compose.yml --env-file /usr/bin/fabric_base/elk/.env up
+
+[Install]
+WantedBy=multi-user.target
