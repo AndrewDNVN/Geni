@@ -103,6 +103,32 @@
   - name: Setting login info for nginx
     shell: htpasswd -b -c  /usr/bin/fabric_base/elk/nginx/etc/.htpasswd.user {{ usr_name_elk }} {{ passwd_elk }}
 
+  - name: Drop in ELK_Stack.service unit file
+    become_method: sudo
+    become_user: root
+    copy: 
+      src: "/users/{{ local_user }}/ELK_Stack.service"
+      dest: /etc/systemd/system/ELK_Stack.service
+      mode: '0644'
+
+  - name: Rebooting systemd deamon('s)
+    become_method: sudo
+    become_user: root
+    systemd:
+      daemon_reload: yes
+  
+  - name: Starting ELK Service
+    become_method: sudo
+    become_user: root
+    service:
+      name: ELK_Stack
+      state: restarted
+      enabled: yes
+
+    # dirty way for the system to start detached and then come back up after intsall
+    # this is so the script does not hang
+
+
 # current issue in how long it takes the stack to run to setup
 
  # - name: Brining Up Stack
