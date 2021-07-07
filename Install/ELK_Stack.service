@@ -1,17 +1,21 @@
 # 
 # ELK Stack systemd service
-#
+# https://gist.github.com/mosquito/b23e1c1e5723a7fd9e6568e5cf91180f
 
 [Unit]
 Description=ELK_Stack
 Documentation=https://github.com/fabric-testbed/fabric-docker-images/tree/master/elk
-After=network.target
+Requires=docker.service
+After=docker.service
 
 [Service]
-Type=simple
-Restart=always
-WorkingDirectory=/usr/bin/fabric_base/
-ExecStart=/usr/bin/docker-compose -f  /usr/bin/fabric_base/elk/docker-compose.yml --env-file /usr/bin/fabric_base/elk/.env up
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/usr/bin/docker-compose -f /usr/bin/fabric_base/elk/docker-compose.yml --env-file /usr/bin/fabric_base/elk/.env up
+
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=autodeploy
 
 [Install]
 WantedBy=multi-user.target
