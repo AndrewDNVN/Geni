@@ -64,7 +64,7 @@
       regexp: '\b(ExecStart=)'
       replace: /usr/local/bin/packetbeat-{{ curr_version }}-linux-x86_64/packetbeat -e -c /usr/local/bin/packetbeat-{{ curr_version }}-linux-x86_64/packetbeat.yml
 
-  - name: Rebooting systemd deamon('s)
+  - name: Rebooting systemd daemon('s)
     become_method: sudo
     become_user: root
     systemd:

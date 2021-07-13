@@ -111,7 +111,7 @@
       dest: /etc/systemd/system/ELK_Stack.service
       mode: '0644'
 
-  - name: Rebooting systemd deamon('s)
+  - name: Rebooting systemd daemon('s)
     become_method: sudo
     become_user: root
     systemd:

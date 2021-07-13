@@ -77,7 +77,7 @@
       regexp: '\b(ExecStart=)'
       replace: /usr/local/bin/filebeat-{{ curr_version }}-linux-x86_64/filebeat -e -c /usr/local/bin/filebeat-{{ curr_version }}-linux-x86_64/filebeat.yml
 
-  - name: Rebooting systemd deamon('s)
+  - name: Rebooting systemd daemon('s)
     become_method: sudo
     become_user: root
     systemd:
