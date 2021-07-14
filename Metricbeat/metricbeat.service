@@ -13,5 +13,8 @@ Restart=always
 WorkingDirectory=/usr/local/bin/metricbeat-7.13.2-linux-x86_64/
 ExecStart=/usr/local/bin/metricbeat-7.13.2-linux-x86_64/metricbeat -e -c /usr/local/bin/metricbeat-7.13.2-linux-x86_64/metricbeat.yml
 
+StandardError=syslog
+SyslogIdentifier=autodeploy_metircbeat
+
 [Install]
 WantedBy=multi-user.target

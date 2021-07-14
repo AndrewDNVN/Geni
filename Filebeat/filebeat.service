@@ -13,5 +13,8 @@ Restart=always
 WorkingDirectory=/usr/local/bin/filebeat-7.13.2-linux-x86_64/
 ExecStart=/usr/local/bin/filebeat-7.13.2-linux-x86_64/filebeat -e -c /usr/local/bin/filebeat-7.13.2-linux-x86_64/filebeat.yml
 
+StandardError=syslog
+SyslogIdentifier=autodeploy_filebeat
+
 [Install]
 WantedBy=multi-user.target

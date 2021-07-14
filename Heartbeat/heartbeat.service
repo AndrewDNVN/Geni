@@ -13,5 +13,8 @@ Restart=always
 WorkingDirectory=/usr/local/bin/heartbeat-7.13.2-linux-x86_64/
 ExecStart=/usr/local/bin/heartbeat-7.13.2-linux-x86_64/heartbeat -e -c /usr/local/bin/heartbeat-7.13.2-linux-x86_64/heartbeat.yml
 
+StandardError=syslog
+SyslogIdentifier=autodeploy_heartbeat
+
 [Install]
 WantedBy=multi-user.target

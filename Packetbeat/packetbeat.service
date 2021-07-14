@@ -13,5 +13,8 @@ Restart=always
 WorkingDirectory=/usr/local/bin/packetbeat-7.13.2-linux-x86_64/
 ExecStart=/usr/local/bin/packetbeat-7.13.2-linux-x86_64/packetbeat -e -c /usr/local/bin/packetbeat-7.13.2-linux-x86_64/packetbeat.yml
 
+StandardError=syslog
+SyslogIdentifier=autodeploy_packetbeat
+
 [Install]
 WantedBy=multi-user.target
