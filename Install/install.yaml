@@ -4,11 +4,11 @@
   hosts: meas_node
   become: yes
   vars:
-    local_user: 
+    local_user: amdo257
     #curr_version: 
     docker_compose_ver: 1.25.5
-    usr_name_elk: 
-    passwd_elk: 
+    usr_name_elk: fabricadmin
+    passwd_elk: VRVG3cf3CJgnVDzA
     # input the user where config files will be
   tasks:
 
@@ -61,12 +61,7 @@
     systemd:
       name: docker
       enabled: yes
-      masked: no
-
-  - name: Start the Docker daemon
-    systemd:
-      name: docker
-      state: started
+      state: restarted
       masked: no
 
   - name: Check if Docker Compose is installed

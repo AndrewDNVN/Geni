@@ -3,11 +3,11 @@
   hosts: usrNodes
   become: yes
   vars:
-    local_user: 
+    local_user: amdo257
     curr_version: 7.13.2
-    elk_host: 
-    elk_usr_name: 
-    elk_passwd: 
+    elk_host: 143.215.216.196
+    elk_usr_name: fabricadmin
+    elk_passwd: VRVG3cf3CJgnVDzA
     elk_protocol: http
     # input the user where config files will be
     # TDOD: Make it so that the packetbeat.yml can be editied per interface currently set to 'any'
