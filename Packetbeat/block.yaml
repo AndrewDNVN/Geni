@@ -3,9 +3,9 @@
   hosts: usrNodes
   become: yes
   vars:
-    local_user: amdo257
+    local_user: 
     curr_version: 7.13.2
-    elk_host: 143.215.216.196
+    elk_host: 
     elk_usr_name: fabricadmin
     elk_passwd: VRVG3cf3CJgnVDzA
     elk_protocol: http
