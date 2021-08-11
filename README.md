@@ -21,3 +21,38 @@ In install.yaml, the elk username and password need to be set.
   # TODO
     - Working on pulling info from host file
     - Updating all dependencies
+
+
+  # How to run
+    Things to upload
+
+  - Pubkey to all nodes for ssh
+  - priv key to elk and install node
+    - set chmod 600 on keys
+
+  - install node things to upload:
+    - mnt full space (https://groups.geni.net/geni/wiki/HowTo/IGGetExtraDIskSpace)
+    - ELK_Stack.service
+    - install.yaml
+    - install host file
+
+  - meas node things to upload:
+    - usrnode host file
+    - InstalltoRunnning.yaml('s) and there respective service files
+
+  - Use multi-site
+    - four per 4
+
+    https://stackoverflow.com/questions/50277495/how-to-run-an-ansible-playbook-with-a-passphrase-protected-ssh-private-key
+
+
+  issues running out of storage rapidly
+
+
+  to be able to see the size: curl -XGET 'pcvm1-2.instageni.colorado.edu:9200/_cat/allocation?v&pretty'
+
+  other info: https://www.elastic.co/guide/en/elasticsearch/reference/1.6/cluster-nodes-stats.html
+   
+   #eval "$(ssh-agent -s)"
+
+   #ssh-add ~/.ssh/id_geni_ssh_rsa
