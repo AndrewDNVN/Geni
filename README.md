@@ -49,10 +49,10 @@ In install.yaml, the elk username and password need to be set.
   issues running out of storage rapidly
 
 
-  to be able to see the size: curl -XGET 'pcvm1-2.instageni.colorado.edu:9200/_cat/allocation?v&pretty'
+  to be able to see the size: curl -XGET 'host:9200/_cat/allocation?v&pretty'
 
   other info: https://www.elastic.co/guide/en/elasticsearch/reference/1.6/cluster-nodes-stats.html
    
-   #eval "$(ssh-agent -s)"
+   # eval "$(ssh-agent -s)"
 
-   #ssh-add ~/.ssh/id_geni_ssh_rsa
+   # ssh-add ~/.ssh/id_geni_ssh_rsa
