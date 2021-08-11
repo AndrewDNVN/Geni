@@ -4,10 +4,11 @@
   become: yes
   vars:
     local_user: 
-    curr_version: 
+    curr_version: 7.13.2
     elk_host: 
     elk_usr_name: 
     elk_passwd: 
+    elk_protocol: http
     # input the user where config files will be
     # TDOD: Make it so that the packetbeat.yml can be editied per interface currently set to 'any'
   tasks:
@@ -31,53 +32,24 @@
 #===================================================
 #     Testing
 
-  - name: Editing packetbeat.yml for elk host for elasticsearch
-    lineinfile:
+  - name: Editing packetbeat.yml for elk host for elasticsearch and kibanna
+    blockinfile:
       path: /usr/local/bin/packetbeat-{{ curr_version }}-linux-x86_64/packetbeat.yml
-      insertafter: 'output.elasticsearch:'
-      regexp: '\b(hosts: )'
-      line: '  hosts: ["{{ elk_host }}:9200"] '
-      firstmatch: no
-
-  - name: Editing packetbeat.yml for username for elasticsearch
-    lineinfile:
-      path: /usr/local/bin/packetbeat-{{ curr_version }}-linux-x86_64/packetbeat.yml
-      insertafter: 'output.elasticsearch:'
-      regexp: '(?:username: "")'
-      line: '  username: "{{ elk_usr_name }}" '
-      firstmatch: no
-
-  - name: Editing packetbeat.yml for passwd for elasticsearch
-    lineinfile:
-      path: /usr/local/bin/packetbeat-{{ curr_version }}-linux-x86_64/packetbeat.yml
-      insertafter: 'output.elasticsearch:'
-      regexp: '(?:password: "")'
-      line: '  password: "{{ elk_passwd }}" '
-      firstmatch: no
-
-  - name: Editing packetbeat.yml for kibana
-    lineinfile:
-      path: /usr/local/bin/packetbeat-{{ curr_version }}-linux-x86_64/packetbeat.yml
-      insertafter: 'setup.kibana:'
-      regexp: '(?:host: "")'
-      line: '  host: "{{ elk_host }}:5601" '
-      firstmatch: yes
-
-  - name: Editing packetbeat.yml for kibana
-    lineinfile:
-      path: /usr/local/bin/packetbeat-{{ curr_version }}-linux-x86_64/packetbeat.yml
-      insertafter: 'setup.kibana:'
-      regexp: '(?:username: "")'
-      line: '  username: "{{ elk_usr_name }}" '
-      firstmatch: yes
-
-  - name: Editing packetbeat.yml for kibana
-    lineinfile:
-      path: /usr/local/bin/packetbeat-{{ curr_version }}-linux-x86_64/packetbeat.yml
-      insertafter: 'setup.kibana:'
-      regexp: '(?:password: "")'
-      line: '  password: "{{ elk_passwd }}" '
-      firstmatch: yes
+      marker: '# Ansible management'
+      block: |
+        setup.kibana:
+          host: "{{elk_host}}:5601"
+          protocol: "{{elk_protocol}}"
+          username: "{{elk_usr_name}}"  
+          password: "{{elk_passwd}}"
+        output.elasticsearch:
+          hosts: ["{{elk_host}}:9200"]
+          protocol: "{{elk_protocol}}"
+          username: "{{elk_usr_name}}"
+          password: "{{elk_passwd}}"
+          timeout: 180
+      backup: yes # for testing
+    
 
 #   Testing
 #===================================================

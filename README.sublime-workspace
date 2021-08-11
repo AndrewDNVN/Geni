@@ -1,0 +1,330 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"loc",
+				"local_user"
+			],
+			[
+				"fabric",
+				"fabric-docker-images"
+			],
+			[
+				"se",
+				"set_folder"
+			],
+			[
+				"file",
+				"filebeat-7"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Debugger: in",
+				"Debugger: Install Adapters"
+			],
+			[
+				"package control ins",
+				"Package Control: Install Package"
+			],
+			[
+				"ra",
+				"Raw Line Edit: View Line Endings"
+			],
+			[
+				"Raw",
+				"Raw Line Edit: Toggle Line Edit Mode"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 130.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/D/Geni_test/ansible_16GB.xml",
+		"/D/Geni_test/Packetbeat/packetbeat.service",
+		"/D/Geni_test/README.md",
+		"/D/Geni_test/Packetbeat/packetbeatInstallToRunning.yaml",
+		"/D/Geni_test/Metricbeat/metricbeat.yml",
+		"/D/Geni_test/Heartbeat/heartbeat.yml",
+		"/D/Geni_test/Heartbeat/heartbeat.service",
+		"/D/Geni_test/hosts",
+		"/D/Geni_test/Heartbeat/heartbeatInstallToRunning.yaml",
+		"/D/Geni_test/Metricbeat/metricbeatInstallToRunning.yaml",
+		"/D/Geni_test/Filebeat/filebeatInstallToRunning.yaml",
+		"/D/Geni_test/Install/install.yaml",
+		"/D/Geni_test/Filebeat/filebeat.yml",
+		"/D/Geni_test/Metricbeat/metricbeat.service",
+		"/D/Geni_test/Filebeat/filebeat.service",
+		"/D/Geni_test/metricbeat.service",
+		"/D/Geni_test/metricbeat.yml",
+		"/D/Geni_test/ansible_8GB.xml",
+		"/D/Geni_test/filebeat.yml",
+		"/D/Geni_test/metricbeatInstallToRunning.yaml",
+		"/D/Dropbox/Important/Work/Research Int/Curr/in.txt",
+		"/D/Geni_test/filebeatInstallToRunning.yaml",
+		"/C/Users/andrew/Downloads/hosts",
+		"/D/Geni_test/tmp_a.yaml",
+		"/D/Geni_test/filebeat.service",
+		"/D/Geni_test/tmp_2.yaml",
+		"/D/Geni_test/ssh.yaml",
+		"/D/Geni_test/test.yaml",
+		"/D/Geni_test/ansible_hosts",
+		"/D/Dropbox/College/AFS/CSO/info.txt",
+		"/C/Users/andrew/Downloads/AMDTestV20_request_rspec.xml",
+		"/D/Dropbox/Important/Work/Research Int/id_geni_ssh_rsa.pub",
+		"/D/Geni_test/Hosts",
+		"/D/Geni_test/mnt.sh",
+		"/D/Dropbox/College/AFS/Clearence/TS/interview/Numbers.txt",
+		"/D/Dropbox/Important/Work/Research Int/Curr/R Specs/1 node test spec.xml",
+		"/D/Geni_test/install.sh",
+		"/D/Dropbox/Important/Work/Research Int/Curr/Issue.txt",
+		"/D/Geni_test/node_install.sh",
+		"/D/Geni_test/install_dev.sh",
+		"/C/Users/andrew/AppData/Local/Temp/Rar$DIa13672.16292/install.sh",
+		"/D/Dropbox/Important/Work/Research Int/Curr/R Specs/AMDTESTSPEC.xml",
+		"/C/Users/andrew/Downloads/1 node test spec.xml",
+		"/C/Users/andrew/Downloads/AMDTestV20A_request_rspec.xml",
+		"/C/Users/andrew/AppData/Local/Temp/Rar$DIa11100.30424/install.sh",
+		"/D/Dropbox/Important/Work/Research Int/Curr/Error logs/Rutgers 16gb CentOs 8 issue 6 10 2021.txt",
+		"/D/Dropbox/Important/Work/Research Int/Curr/Error logs/Rutgers 16gb CentOs 8 issue 6 10 2021",
+		"/C/Users/andrew/AppData/Local/Temp/Rar$DIa9084.21806/install.sh",
+		"/D/Dropbox/smooth whisky .txt",
+		"/D/Dropbox/Important/Work/Research Int/Curr/Shell scripts/anisble_Ubun.sh",
+		"/D/Dropbox/Important/Work/Research Int/Curr/anisble_Ubun.sh",
+		"/D/Dropbox/Important/Work/Research Int/Curr/Shell scripts/test.sh",
+		"/D/Dropbox/Important/Work/Research Int/Curr/anisble_centos.sh",
+		"/D/Dropbox/Important/Work/Research Int/Curr/YML files/install.yml",
+		"/D/Dropbox/Important/Work/Research Int/Curr/deploy-ssh.yml",
+		"/D/Dropbox/Important/Work/Research Int/Curr/R Specs/AMDTestV5_request_rspec.xml",
+		"/D/Dropbox/Important/Work/Research Int/Curr/test.yml",
+		"/D/Dropbox/Important/Work/Research Int/Curr/start_up_nodes.sh",
+		"/D/Dropbox/Important/Work/Research Int/Curr/test.sh",
+		"/D/Dropbox/Important/Work/Research Int/Curr/install.yml",
+		"/D/Dropbox/Important/Work/Research Int/Curr/conn.yml",
+		"/D/Dropbox/Important/Work/Research Int/Curr/find.sh",
+		"/D/Dropbox/Important/Work/Research Int/Curr/genipublic.txt",
+		"/D/Dropbox/Important/Work/Research Int/Curr/geniproject.txt",
+		"/D/Dropbox/Important/Work/Research Int/Curr/list-hosts.txt",
+		"/C/Users/andrew/Downloads/AMDTestV8_manifest_rspec.xml",
+		"/D/Dropbox/Important/Work/Research Int/Curr/TestAMD_request_rspec.xml",
+		"/D/Dropbox/Important/Work/Research Int/Key Pairs/Pub",
+		"/D/Dropbox/Important/Work/Research Int/Key Pairs/priv",
+		"/D/Dropbox/Important/Work/Research Int/Curr/starr_up.sh",
+		"/D/Dropbox/Important/Work/Research Int/Elk/Filebeat_issue.txt",
+		"/D/Dropbox/Important/Work/Webmaster/job_dec.txt",
+		"/D/Dropbox/Important/Loans.txt",
+		"/E/Showrun.txt",
+		"/C/Users/andrew/Downloads/temp.txt",
+		"/D/Dropbox/Important/Work/CS TA/Sp 2021/Project/Proj 3/PA3.cpp",
+		"/C/Users/andrew/Downloads/up.csv",
+		"/C/Users/andrew/Downloads/down.csv",
+		"/C/Users/andrew/Downloads/G.csv",
+		"/D/Dropbox/Important/Work/CS TA/Sp 2021/Labs/lab8/MathOperations.cpp",
+		"/D/Dropbox/Important/Work/CS TA/Sp 2021/Labs/lab8/Lab8.cpp",
+		"/D/Dropbox/Important/Work/CS TA/Sp 2021/Labs/lab8/MathOperations.h",
+		"/D/Dropbox/Important/Work/Director of Staff/helpful links.txt",
+		"/D/Dropbox/Important/Work/CS TA/Sp 2021/Labs/lab9/MathReport.cpp",
+		"/D/Dropbox/Important/Work/Director of Staff/Dining Out/dining out.txt",
+		"/D/Dropbox/College/AFS/413/1206/Notes.txt",
+		"/D/Dropbox/Important/Work/Director of Staff/dining out.txt",
+		"/C/Users/andrew/Downloads/game-2.cpp",
+		"/D/Dropbox/Important/Work/CS TA/Sp 2021/Labs/lab7/Clock.cpp",
+		"/D/Dropbox/Important/Work/CS TA/Sp 2021/Labs/lab7/Clock.h",
+		"/D/Dropbox/Important/Work/CS TA/Sp 2021/Labs/lab7/Lab7_TestClock.cpp",
+		"/D/Dropbox/Important/Work/CS TA/Sp 2021/Project/Proj 2/proj2.cpp",
+		"/C/Users/andrew/Downloads/Project2(1).cpp",
+		"/C/Users/andrew/Downloads/Project2.cpp",
+		"/C/Users/andrew/Downloads/main(1).cpp",
+		"/C/Users/andrew/Downloads/main.cpp",
+		"/C/Users/andrew/Downloads/Project 2.cpp",
+		"/D/Dropbox/Important/Work/CS TA/Sp 2021/Labs/lab6.cpp",
+		"/D/Dropbox/College/CS 371/Curr/Proj/proj/client/Client.cpp",
+		"/D/Dropbox/Important/Work/CS TA/Sp 2021/Labs/lab5/lab5.cpp",
+		"/D/Dropbox/Important/Work/CS TA/Sp 2021/Lab Exam 1/lex1C.cpp",
+		"/C/Users/andrew/Downloads/main (1).cpp",
+		"/C/Users/andrew/Downloads/Lab Exam 1.cpp",
+		"/C/Users/andrew/Downloads/Project1.cpp",
+		"/D/Dropbox/Important/Work/CS TA/Sp 2021/Labs/lab5/students.txt",
+		"/D/Dropbox/College/CS 371/CS 371 - Old/Assignment/ReadMe.txt",
+		"/D/Dropbox/Important/Work/CS TA/Sp 2021/Labs/lab3/lab3.cpp",
+		"/D/Dropbox/College/CS 371/Curr/Proj/Up/client.cpp",
+		"/D/Dropbox/College/CS 371/Curr/Proj/Up/server.cpp",
+		"/D/Dropbox/College/CS 371/CS 371 - Old/Assignment/client.c",
+		"/D/Dropbox/College/CS 371/CS 371 - Old/Assignment/server.c",
+		"/D/Dropbox/College/OLD Classes/CS 315/PA1/pa1-510.cc",
+		"/D/Dropbox/Important/Work/Research Int/Floodlight/init",
+		"/D/Dropbox/College/OLD Classes/CS 270/Backup/proj5/proj5/fileRun.c",
+		"/D/Dropbox/College/OLD Classes/CS 270/Backup/proj5/proj5/filed.c",
+		"/D/Dropbox/College/OLD Classes/CS 270/Backup/proj5/proj5/newKey.c",
+		"/D/Dropbox/College/OLD Classes/CS 270/Backup/proj5/proj5/Makefile",
+		"/D/Dropbox/College/OLD Classes/CS 270/Backup/proj5/proj5/README",
+		"/C/Users/andrew/Downloads/client_http.hpp",
+		"/D/Dropbox/College/OLD Classes/CS 270/Backup/proj5/proj5/fileGet.c",
+		"/D/Dropbox/College/OLD Classes/CS 270/Backup/proj5/proj5/fileDigest.c",
+		"/D/Dropbox/College/OLD Classes/CS 270/Backup/proj5/proj5/csapp.c",
+		"/D/Dropbox/College/OLD Classes/CS 270/old - Dawson/echoserveri.c",
+		"/D/Dropbox/College/OLD Classes/CS 270/old - Dawson/echoclient.c",
+		"/D/Dropbox/College/OLD Classes/CS 270/Backup/proj4/novsh.cpp",
+		"/D/Dropbox/Important/Work/Research Int/Stitching/init",
+		"/D/Dropbox/Important/Work/Research Int/Geni Desktop/init",
+		"/D/Dropbox/Important/Work/Research Int/Web Server/init"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 42.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "README.sublime-project",
+	"replace":
+	{
+		"height": 70.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 204.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
