@@ -7,84 +7,62 @@
     local_user: amdo257
     #curr_version: 
     docker_compose_ver: 1.25.5
-    usr_name_elk: fabricadmin
+    usr_name_elk: fabricadmin 
     passwd_elk: 3MC2396tEihdvJ56
     # input the user where config files will be
   tasks:
 
-  - name: Remove docker if installed from CentOS repo
-    yum:
-      name:
-        - docker
-        - docker-client
-        - docker-client-latest
-        - docker-common
-        - docker-latest
-        - docker-latest-logrotate
-        - docker-logrotate
-        - docker-engine
-      state: removed
-
-  - name: yum-clean-metadata # clean meta data for setup
-    command: yum clean metadata
-    args:
-      warn: no
-
   - name: Installing Tooling for Stack via Yum
+    become_method: sudo
+    become_user: root
     yum:
-      name: 
-        - epel-release 
-        - gcc 
-        - openssl-devel 
-        - bzip2-devel
-        - libffi-devel
-        - centos-release-scl
-        - yum-utils
-        - ansible
-        - git
-        - httpd-tools
-        - lvm2
-        - device-mapper-persistent-data
+      name: "{{ packages }}"
       state: latest
-      update_cache: true
-      
-
-  - name: Add Docker repo
-    get_url:
-      url: https://download.docker.com/linux/centos/docker-ce.repo
-      dest: /etc/yum.repos.d/docer-ce.repo
-  
-  - name: Install Docker
-    yum:
-      name: 
-        - docker-ce
-        - docker-ce-cli
-        - containerd.io
-      state: latest
-
-- name: Rebooting systemd daemon('s) # to make sure everything is nice and clean
-  systemd:
-    daemon_reload: yes
-
- - name: Starting Docker Daemon
-   service:
-     name: docker
-     state: restarted
-     enabled: yes
-      
+    vars: 
+      packages:
+      - epel-release 
+      - gcc 
+      - openssl-devel 
+      - bzip2-devel
+      - libffi-devel
+      - centos-release-scl
+      #- rh-python36
+      - yum-utils
+      - ansible
+      - git
+      - httpd-tools
 
   # https://lastviking.eu/install_docker_on_centos_with_ansible.html
 
   # this seciton is for base install of docker / docker-compose
 
-  
+  - name: Check if Docker is installed
+    shell: systemctl status docker
+    register: docker_check
+    ignore_errors: yes
 
-  #- name: Add user {{ local_user}} to docker group
-  #  user:
-  #    name: ' {{ local_user }} '
-  #    groups: docker
-  #    append: yes
-  # ^ casused ansible to break and print out'y' on repeat in the issuing terminal
+  - name: Download the Docker installer
+    get_url:
+      url: https://get.docker.com/
+      dest: /root/install_docker.sh
+      mode: 0700
+    when: docker_check.stderr.find('service could not be found') != -1
+
+  - name: Install Docker
+    shell: /root/install_docker.sh
+    when: docker_check.stderr.find('service could not be found') != -1
+
+  - name: Remove the Docker installer file.
+    file:
+      state: absent
+      path: /root/install_docker.sh
+
+  - name: Enable the Docker daemon in systemd
+    systemd:
+      name: docker
+      enabled: yes
+      state: restarted
+      masked: no
 
   - name: Check if Docker Compose is installed
     command: docker-compose --version
@@ -132,16 +110,22 @@
     shell: htpasswd -b -c  /usr/bin/fabric_base/elk/nginx/etc/.htpasswd.user {{ usr_name_elk }} {{ passwd_elk }}
 
   - name: Drop in ELK_Stack.service unit file
+    become_method: sudo
+    become_user: root
     copy: 
       src: "/users/{{ local_user }}/ELK_Stack.service"
       dest: /etc/systemd/system/ELK_Stack.service
       mode: '0644'
 
   - name: Rebooting systemd daemon('s)
+    become_method: sudo
+    become_user: root
     systemd:
       daemon_reload: yes
   
   - name: Starting ELK Service
+    become_method: sudo
+    become_user: root
     service:
       name: ELK_Stack
       state: restarted
@@ -150,3 +134,10 @@
     # dirty way for the system to start detached and then come back up after intsall
     # this is so the script does not hang
 
+
+# current issue in how long it takes the stack to run to setup
+
+ # - name: Brining Up Stack
+ #   shell: /usr/bin/docker-compose -f  /usr/bin/fabric_base/elk/docker-compose.yml --env-file /usr/bin/fabric_base/elk/.env up
+ #   async:  
+ #   poll: 
