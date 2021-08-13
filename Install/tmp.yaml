@@ -4,11 +4,11 @@
   hosts: meas_node
   become: yes
   vars:
-    local_user: amdo257
+    local_user: 
     #curr_version: 
     docker_compose_ver: 1.25.5
-    usr_name_elk: fabricadmin 
-    passwd_elk: 3MC2396tEihdvJ56
+    usr_name_elk: 
+    passwd_elk: 
     # input the user where config files will be
   tasks:
 
